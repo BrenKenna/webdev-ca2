@@ -1,0 +1,4 @@
+<article class="articles">
+    <h2>Article Heading</h2>
+    <p>Paragraph for article</p>
+</article>
