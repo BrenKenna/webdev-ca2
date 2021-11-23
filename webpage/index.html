@@ -147,9 +147,132 @@
                     </div>
                 </nav>
 
-                <p>Hello I am in the wrapper.content</p>
+                <!-- Modal content if it was ignored -->
+                <!-- 
+                        <div id="helperDiv">
+                        <br><br>
+                        <h5 class="modal-title">Welcome to the online HR Database App</h5>
+                        <p>Use the sidebar on the left to navigate to a specific query, or the navigation buttons on the top right.
+                     <br>From there you can navigate the queries for that section using the sidebar, or move to another section using the navigation buttons.</p>
+                    </div>
+                 -->
+
+                <!-- TV Div Template -->
+                <br><br>
+                <div class="tv" id="tvDiv" style="position: relative; height: 575px; width: 1200px; border: 3px solid black; margin: auto;" >
+
+                    <!-- Navigate channels -->
+                    <div class="tv tv-nav" id="tv-left" style="position: absolute; width: 70px; height: 545px; border: 2px solid green; left: 10px; top: 15px; bottom: 15px;"></div>
+                    <div class="tv tv-nav" id="tv-right" style="position: absolute; width: 70px; height: 545px; border: 2px solid blue; right: 10px; top: 15px; bottom: 15px;"></div>
+
+                    <!-- Screen -->
+                    <div
+                        class="tv-content"
+                        style="position: absolute; width: auto; height: 470px; border: 2px solid red; left: 85px; right: 85px; top: 15px; bottom: 15px;"
+                    >
+
+                        <div
+                            class="tv tv-screen"
+                            style="position: absolute; width:auto; height: auto; border: 2px solid blue; left: 5px; right: 5px; top: 5px; bottom: 5px;"
+                        >
+
+                            <!-- Header / Query Label -->
+                            <h5 class="modal-title">Welcome to the online HR Database App</h5>
+
+                            <!-- Query Code Block -->
+                            <p>Use the sidebar on the left to navigate to a specific query, or the navigation buttons on the top right.</p>
+
+                            <!-- Results -->
+                            <p>From there you can navigate the queries for that section using the sidebar, or move to another section using the navigation buttons.</p>
+
+                            <!-- Simple Table -->
+                            <table class="table table-dark" style="position: absolute; bottom: 5px; ">
+
+                                <!-- Header -->
+                                <thead>
+                                  <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">emp_id</th>
+                                    <th scope="col">First Name</th>
+                                    <th scope="col">Last Name</th>
+                                    <th scope="col">Date of Birth</th>
+                                  </tr>
+                                </thead>
+
+                                <!-- Body -->
+                                <tbody>
+                                    <tr>
+                                      <th scope="row">1</th>
+                                      <td>1147</td>
+                                      <td>John</td>
+                                      <td>Doe</td>
+                                      <td>06/06/1987</td>
+                                    </tr>
+                                    <tr>
+                                      <th scope="row">2</th>
+                                      <td>329</td>
+                                      <td>Jane</td>
+                                      <td>Doe</td>
+                                      <td>23/10/1980</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">3</th>
+                                        <td>4589</td>
+                                        <td>Bill</td>
+                                        <td>Joe</td>
+                                        <td>18/04/1990</td>
+                                      </tr>
+                                  </tbody>
+                                </table>
+
+                        </div>
+                    </div>
+
+                    <!-- TV Buttons -->
+                    <div class="tv tv-btn" style="padding-top: 10px; position: absolute; bottom: 10px; border: 2px solid purple; left: 90px; right: 90px; width: auto; height: 65px;">
+
+                        <!-- Go to first -->
+                        <button type="button" id="goToFirst" class="btn btn-info" style="position: absolute; left: 2%;">
+                            <span>Go to First</span>
+                        </button>
+
+                        <!-- Run Query -->
+                        <button type="button" id="runQuery" class="btn btn-info" style="position: absolute; left: 35%;">
+                            <span>Run Query</span>
+                        </button>
+
+                        <!-- Reset -->
+                        <button type="button" id="resetBtn" class="btn btn-info"style="position: absolute; right: 35%;">
+                            <span>Reset</span>
+                        </button>
+
+                        <!-- Go to last -->
+                        <button type="button" id="goToLast" class="btn btn-info" style="position: absolute; right: 2%;">
+                            <span>Go to Last</span>
+                        </button>
+
+                    </div>
+
+                </div>
+
             </div>
         
+        </div>
+
+        <!-- Modal for how to navigate webpage -->
+        <div id="tutorialModal" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Welcome to the online HR Database App</h5>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Use the sidebar on the left to navigate to a specific query, or the navigation buttons on the top right.</p>
+                        <p>From there you can navigate the queries for that section using the sidebar, or move to another section using the navigation buttons.</p>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <!--
@@ -176,6 +299,9 @@
             ]);
 
             $(document).ready(function () {
+
+                // Display helper modal on page load (index.html only)
+                $("#tutorialModal").modal('show');
 
                 // Toggle the sidebar
                 $('#sidebarCollapse').on('click', function () {
