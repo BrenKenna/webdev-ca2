@@ -7,7 +7,7 @@ Each query and their results can then be sent to a "*TV*" like div broken into o
 
 
 
-![app-index](./plan/app-index.jpg)
+![app-index](./plan/tv-div-page-boilerplate.jpg)
 
 
 
@@ -41,6 +41,8 @@ Each query and their results can then be sent to a "*TV*" like div broken into o
 
 - With the boilerplate of the side + nav bar from bootstrap, the starting JS code (slide-show, AJAX, SQL.js & jQuery) can start to look at the HTML.
 
-  - TV div that contains query, results div and buttons.
-  - Separate HTML pages for sections and two example queries ( "section1/query1.html, section1/query2.html" etc ).
-  - Populating sidebar with the text file containing 2 queries per section.
+  - Simple enough to setup, some work is needed on the CSS-calc() part though. Simplest is to use current scheme, outter height and widths to percentages.
+  - Styling tables could cause some issues, could place it another div (i.e results box).
+  - Need to also update the content for the landing page, but need to properly style relevant query & result boxes.
+  - Settle on a color stylings for the channel buttons.
+  - Can now move onto the slide-show.js, which will likely be merged with the cms.js towards the end. But keeping it simple for now.
