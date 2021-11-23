@@ -27,15 +27,14 @@ Each query and their results can then be sent to a "*TV*" like div broken into o
 
 - Should try out both jQuery's accordion and bootstraps sidebar for navigating content next with 3 example queries from each section (ignore naive CMS for now). Ideally this element can displayed / hidden by a click (template jQuery-animation first div in the buttons.html). However could be a bit too much this time around given the additional software requirements on the menu system side.
 
-  - Started sidebar, straight forward enough could be simpler than the accordion.
-  - Changes to the example will be that each section of queries is a drop down listing the queries for that section query.
-  - For the top nav bar, the links are to the first query of each section.
-  - Each queries section of dropdowns is going to start as an empty list and is then loaded.
-  - Could maybe add the "run all" button here as the last element.
-  - Some small CSS touch-ups to implement, but media queries are in for the boilerplate. Can add font sizes to this later.
-
+  - Populating sidebar from the text based cms is straight forward. However got an "$ not found" error when trying to use from "menu.js". Will revert to vanilla and dom later.
+  - Will re-organize to original plan of inserting the appropriate elements later, updating text is fine for now as the TV-Div needs to be created and coded.
+  - The index.html will act as a guide, selecting the a query from a section will manage the slide-show.js (instantiating or updating).
+  - The CMS should also be its own class simplify getting/setting and serving content... Much the same as the slide-show.js
+    - Update the "canary down the cave" version before implementing on the project side.
   
-
+  
+  
 - No helper functions are really needed since it's just button presses, if time for creating/storing a custom queries can style this using bootstrap modals.
 
   
