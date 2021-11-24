@@ -1,27 +1,20 @@
-/**
- * jQuery Divs and Buttons :)
- * 
- * Slide show object:
- *   - Basically a quicker linked list for starting out.
- *   - Be good dynamically alter "data" attribute as needed
- */
+// Import the slideshow
+import SlideShow from './SlideShow.js';
 
-// Object for slide show
-let slides = {
 
-    // Can also just store the text, for $("#slide").text(slides.data[XXX])
-    data: [
-        "<p class=\"sildePara\" id=\"slide\">I am paragraph 1</p>",
-        "<p class=\"sildePara\" id=\"slide\">I am paragraph 2</p>",
-        "<p class=\"sildePara\" id=\"slide\">I am paragraph 3</p>",
-        "<p class=\"sildePara\" id=\"slide\">I am paragraph 4</p>",
-        "<p class=\"sildePara\" id=\"slide\">I am paragraph 5</p>",
-        "<p class=\"sildePara\" id=\"slide\">I am paragraph 6</p>",
-    ],
-    currentPos: -1,
-    lastPos: 5,
-    firstPos: 0
-};
+
+// Instantiate
+let paragraphData = [
+    "<p class=\"sildePara\" id=\"slide\">I am another paragraph 1</p>",
+    "<p class=\"sildePara\" id=\"slide\">I am another paragraph 2</p>",
+    "<p class=\"sildePara\" id=\"slide\">I am another paragraph 3</p>",
+    "<p class=\"sildePara\" id=\"slide\">I am another paragraph 4</p>",
+    "<p class=\"sildePara\" id=\"slide\">I am another paragraph 5</p>",
+    "<p class=\"sildePara\" id=\"slide\">I am another paragraph 6</p>"
+];
+let slides = new SlideShow();
+slides.setdataset(paragraphData);
+console.dir(slides, {depth: null});
 
 
 // Responsive buttons after page is loaded
@@ -135,27 +128,21 @@ $(document).ready( function() {
     $("#nextSlide").click( function() {
 
         // Handle moving about list logically
-        slides.currentPos++;
-        if ( slides.currentPos > slides.lastPos) {
-            slides.currentPos = slides.firstPos;
-        }
+        slides.goToNext();
 
         // Set content of span
-        $("#active").text(slides.currentPos + 1);
-        $("#slide").replaceWith(slides.data[slides.currentPos]);
+        $("#active").text(slides.getPosition() + 1);
+        $("#slide").replaceWith(slides.getActiveElement());
     });
 
     // Handle backward
     $("#prevSlide").click(function() {
 
         // Handle moving about list logically
-        slides.currentPos--;
-        if ( slides.currentPos < slides.firstPos) {
-            slides.currentPos = slides.lastPos;
-        }
+        slides.goToPrevious();
 
         // Set content of span
-        $("#active").text(slides.currentPos + 1);
-        $("#slide").replaceWith(slides.data[slides.currentPos]);
+        $("#active").text(slides.getPosition() + 1);
+        $("#slide").replaceWith(slides.getActiveElement());
     });
 });
