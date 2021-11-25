@@ -42,7 +42,43 @@ Each query and their results can then be sent to a "*TV*" like div broken into o
 - With the boilerplate of the side + nav bar from bootstrap, the starting JS code (slide-show, AJAX, SQL.js & jQuery) can start to look at the HTML.
 
   - Simple enough to setup, some work is needed on the CSS-calc() part though. Simplest is to use current scheme, outter height and widths to percentages.
+  
   - Styling tables could cause some issues, could place it another div (i.e results box).
+  
   - Need to also update the content for the landing page, but need to properly style relevant query & result boxes.
+  
   - Settle on a color stylings for the channel buttons.
+  
   - Can now move onto the slide-show.js, which will likely be merged with the cms.js towards the end. But keeping it simple for now.
+  
+    
+  
+- Populating the slideshow object:
+
+  - Simple enough, best way forward given how the CMS.js was setup is to use the below format and appropriate getters/setters.
+
+  - Navigating sections / pages can be done through slideShow.getSections().keys(), and navigating a section's queries can be done through slideShow.getSection("SectionX").keys().
+
+  - From a package point of view, consider renaming the "Section", "Query" to something like Page1 and Item2. Or the user defines their own, and have a slideShow.getRoot("Section1") and slideShow.getChild("Section1", "Query1", "Label | Data").
+
+    
+
+    slideShow.data = {
+
+    ​	"Section1": newMap([
+
+    ​		["Query1",  new Map([
+
+    ​				["Label", "For jQuery / DOM"],
+
+    ​				["Data", "SQL Query"]
+
+    ​			])
+
+    ​		]
+
+    ​		
+
+    ​	])
+
+    }
