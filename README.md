@@ -56,29 +56,22 @@ Each query and their results can then be sent to a "*TV*" like div broken into o
 - Populating the slideshow object:
 
   - Simple enough, best way forward given how the CMS.js was setup is to use the below format and appropriate getters/setters.
-
+  
   - Navigating sections / pages can be done through slideShow.getSections().keys(), and navigating a section's queries can be done through slideShow.getSection("SectionX").keys().
-
-  - From a package point of view, consider renaming the "Section", "Query" to something like Page1 and Item2. Or the user defines their own, and have a slideShow.getRoot("Section1") and slideShow.getChild("Section1", "Query1", "Label | Data").
-
     
+  - From a package point of view, consider renaming the "Section", "Query" to something like Page1 and Item2. Or the user defines their own, and have a slideShow.getRoot("Section1") and slideShow.getChild("Section1", "Query1", "Label | Data").
+  
+    
+  
+-  Setting the data attribute as a JSON object is a lot easier, and removes the need for a two step parsing.
+  - Also also means that SlideShow.js can carry a list of keys for the "Sections", and a list of keys for "Pages / Queries". Meaning the SlideShow.js now needs to move in 2 dimensions, mostly setup just need add a setter onto the class methods that will be linked to the buttons (probably an afternoon).
+  
+  - Adding functionality to TV-Div given instantiation of SlideShow wasn't too bad. Much cleaning is needed on the class documentation, methods and clearer attribute names (For later).
+  
+    
+  
+- Next stops are:
 
-    slideShow.data = {
-
-    ​	"Section1": newMap([
-
-    ​		["Query1",  new Map([
-
-    ​				["Label", "For jQuery / DOM"],
-
-    ​				["Data", "SQL Query"]
-
-    ​			])
-
-    ​		]
-
-    ​		
-
-    ​	])
-
-    }
+  - Styling the TV-Div.
+  - Populating the table (data & column names are separate object fields).
+  - Tidy up the repo & index.html
