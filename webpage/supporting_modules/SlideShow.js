@@ -1,7 +1,13 @@
 /**
- * JSON Dataset much easier
- *  -> Store section + query IDs in an array since navigation buttons are array based.
+ *  -> JSON Dataset much easier to work with and consider.
  * 
+ *  -> Updated methods to allow moving between sections, and pages within sections.
+ * 
+ *  -> Methods for retriving the active page, active position and by Section-Page Key combo
+ * 
+ *  -> Attributes for moving around list of sectionIDs and pageIDs
+ * 
+ *  -> Much to do on documentation, try out buttons first :(
  */
 
 
