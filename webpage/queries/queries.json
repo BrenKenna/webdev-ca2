@@ -1,0 +1,46 @@
+{
+    "Section1": {
+        "Query1": {
+            "Label": "List Employees",
+            "Query": "SELECT DISTINCT emp_id AS 'EmployeeID', first_name AS 'First Name', last_name AS 'Last Name' FROM employees ORDER BY RANDOM() LIMIT 15;"
+        },
+        "Query2": {
+            "Label": "List Job Titles",
+            "Query": "SELECT DISTINCT title AS 'Job Title' FROM titles;"
+        },
+        "Query3": {
+            "Label": "List Employees Ordered By Name",
+            "Query": "SELECT DISTINCT first_name AS 'First Name',  last_name AS 'Last Name' FROM employees ORDER BY first_name, last_name ASC LIMIT 15;"
+        }
+    },
+
+    "Section2": {
+        "Query1": {
+            "Label": "List Department Titles",
+            "Query": "SELECT DISTINCT dept_name AS 'Department Title' FROM departments LIMIT 15;"
+        },
+        "Query2": {
+            "Label": "List Total Number of Employees",
+            "Query": "SELECT COUNT(DISTINCT emp_id) AS 'N Employees' FROM employees;"
+        },
+        "Query3": {
+            "Label": "List Female Employees",
+            "Query": "SELECT * FROM employees WHERE gender = 'F' GROUP BY emp_ID ORDER BY RANDOM() LIMIT 15;"
+        }
+    },
+
+    "Section3": {
+        "Query1": {
+            "Label": "List Employees Working Since May-1991",
+            "Query": "SELECT COUNT(DISTINCT emp_id) AS 'Employee Count' FROM employees WHERE hire_date = '1991-05-01';"
+        },
+        "Query2": {
+            "Label": "List Count of Postitions Held Per Employees",
+            "Query": "SELECT emp_id, COUNT(DISTINCT title) AS 'N_Titles' FROM titles GROUP BY emp_id HAVING N_Titles >= 2 ORDER BY N_Titles LIMIT 15;"
+        },
+        "Query3": {
+            "Label": "Count Active Salaries Between 90,000 - 90,004",
+            "Query": "SELECT COUNT(DISTINCT emp_id) AS 'Employee Count' FROM salaries WHERE to_date = '9999-01-01' AND salary BETWEEN(90000 AND 90004);"
+        }
+    }
+}

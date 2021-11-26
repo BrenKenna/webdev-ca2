@@ -299,7 +299,6 @@
             let slides, myCMS;
             slides = new SlideShow();
             myCMS = new CMS();
-            setInterval("", 5000);
 
             $(document).ready(function () {
 
@@ -319,33 +318,16 @@
                     // Encountered issues when encapsulated within CMS.js
                     if (xhttp.readyState == 4 && xhttp.status == 200) {
 
-                        // Initalize variables
-                        let sectionID, queryID, queryLabel, query, menuID;
-
-                        // Update the slides
-                        slides.setdataset( JSON.parse(xhttp.responseText) );
-
-                        // Iterate over the sections
-                        for(sectionID in slides.getDataset() ) {
-
-                            // Setting the query label
-                            for(queryID in slides.getDataset()[sectionID] ) {
-                                // console.log( slides.getDataset()[sectionID][queryID] )
-                                menuID=`${sectionID}_${queryID}`;
-                                $(`#${menuID}`).text( slides.getDataset()[sectionID][queryID]["Label"] )
-                            }
-                        }
-
-                        // Update content from the TV-Div
-                        let data =  slides.getActiveElement();
-                        $("#blockTitle").text( data["Label"] );
-                        $("#queryBlock").text( data["Query"] );
-                        $("#resultsBlock").text("\nResults Pending");
+                        // Populate each section
+                        myCMS.setContent(xhttp.responseText);
+                        
+                        // Update the side bar
+                        myCMS.updateLabeledContent();
                     }
                 };
 
                 // Get the CMS
-                xhttp.open("GET", "./queries/queries.json", true);
+                xhttp.open("GET", "./queries/queries.txt", true);
                 xhttp.send();
             });
 

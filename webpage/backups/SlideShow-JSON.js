@@ -1,10 +1,6 @@
 /**
- * JSON Dataset much easier
- *  -> Store section + query IDs in an array since navigation buttons are array based.
- * 
+ * JSON Data
  */
-
-
 /**
  *
  * Slide show class to better represent the slide object
@@ -22,8 +18,6 @@ class SlideShow {
     #lastSection= -1;
     #firstPage = -1;
     #lastPage = -1;
-    #sectionIDs = [];
-    #pageIDs = [];
 
 
     /**
@@ -40,7 +34,7 @@ class SlideShow {
         this.#firstPage = -1;
         this.#lastPage = -1;
     }
-
+s
     /**
      * Set #dataset attributes
      */
@@ -48,21 +42,13 @@ class SlideShow {
         this.#dataset = data;
         this.#currentSection = 0;
         this.#currentPage = 0;
-
-        // Set IDs
-        let firstSectionID = Object.keys(this.#dataset)[0];
-        this.#sectionIDs = Object.keys(this.#dataset);
-        this.#pageIDs = Object.keys(this.#dataset[firstSectionID]);
-
-        // Set section
         this.#sections = Object.keys(this.#dataset).length;
         this.#lastSection = Object.keys(this.#dataset).length -1;
 
         // Assume pages to be read from first section
+        let firstSectionID = Object.keys(this.#dataset)[0];
         this.#firstPage = 0;
         this.#lastPage = Object.keys(this.#dataset[firstSectionID]).length -1;
-
-        
 
     }
 
@@ -198,21 +184,7 @@ class SlideShow {
      * current position
      * @returns dataType
      */
-    getActiveElement() {
-        let position, data, sectionID, pageID;
-        position = this.getPosition();
-        sectionID = this.#sectionIDs[ position[0] ];
-        pageID = this.#pageIDs[ position[1] ];
-        data = this.#dataset[sectionID][pageID];
-        return data;
-    }
-
-    /**
-     * 
-     * Get the data for required section, page
-     * 
-     */
-    getElementByKeys(section, page) {
+    getActiveElement(section, page) {
         return this.#dataset[section][page];
     }
 
