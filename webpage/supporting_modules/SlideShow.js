@@ -61,22 +61,17 @@ class SlideShow {
         this.#pageIDs = Object.keys(this.#dataset[firstSectionID]);
 
         // Set section
-        this.#sections = Object.keys(this.#dataset).length;
-        this.#lastSection = Object.keys(this.#dataset).length -1;
-
-        // Assume pages to be read from first section
-        this.#firstPage = 0;
-        this.#lastPage = Object.keys(this.#dataset[firstSectionID]).length -1;
-
-        
-
+        this.#sections = this.#sectionIDs.length-1;
+        this.#sectionPages = this.#pageIDs.length-1;
     }
 
     /**
      * Set page count for active section
      */
     setPages(section){
-        this.#sectionPages = Object.keys(this.#dataset[section]).length - 1;
+        let sectionID = Object.keys(this.#dataset)[section];
+        this.#pageIDs = Object.keys(this.#dataset[sectionID]);
+        this.#sectionPages = this.#pageIDs.length-1;
     }
 
     // 
@@ -106,6 +101,7 @@ class SlideShow {
      */
     goToLastSection() {
         this.#currentSection = this.#sections;
+        this.#currentPage = 0;
         this.setPages( this.#currentSection );
     }
     goToLastPage(){
@@ -141,7 +137,7 @@ class SlideShow {
         // Increment while not on last position
         if ( this.#currentSection < this.#sections ) {
             this.#currentSection++;
-            this.setPages( this.#currentSection );
+            this.goToFirstPage();
         } else {
 
             // Otherwise go to the first element
@@ -160,7 +156,6 @@ class SlideShow {
         // Decrement while not on the first position
         if (this.#currentPage > 0) {
             this.#currentPage--;
-
         } else {
 
             // Otherwise go to the last
@@ -179,6 +174,7 @@ class SlideShow {
         if ( this.#currentSection > 0 ) {
             this.#currentSection--;
             this.setPages( this.#currentSection );
+            this.goToFirstPage();
         } else {
 
             // Otherwise go to the first element

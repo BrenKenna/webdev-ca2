@@ -165,7 +165,7 @@
                 <div class="tv" id="tvDiv" style="position: relative; height: 575px; width: 1200px; border: 3px solid black; margin: auto;" >
 
                     <!-- Navigate channels -->
-                    <div class="tv tv-nav" id="tv-left" style="position: absolute; width: 70px; height: 545px; border: 2px solid green; left: 10px; top: 15px; bottom: 15px;"></div>
+                    <div type="button" class="tv tv-nav" id="tv-left" style="position: absolute; width: 70px; height: 545px; border: 2px solid green; left: 10px; top: 15px; bottom: 15px;"></div>
                     <div class="tv tv-nav" id="tv-right" style="position: absolute; width: 70px; height: 545px; border: 2px solid blue; right: 10px; top: 15px; bottom: 15px;"></div>
 
                     <!-- Screen -->
@@ -239,8 +239,8 @@
                     <div class="tv tv-btn" style="padding-top: 10px; position: absolute; bottom: 10px; border: 2px solid purple; left: 90px; right: 90px; width: auto; height: 65px;">
 
                         <!-- Go to first -->
-                        <button type="button" id="goToFirst" class="btn btn-info" style="position: absolute; left: 2%;">
-                            <span>Go to First</span>
+                        <button type="button" id="prevQ" class="btn btn-info" style="position: absolute; left: 2%;">
+                            <span>Previous</span>
                         </button>
 
                         <!-- Run Query -->
@@ -254,8 +254,8 @@
                         </button>
 
                         <!-- Go to last -->
-                        <button type="button" id="goToLast" class="btn btn-info" style="position: absolute; right: 2%;">
-                            <span>Go to Last</span>
+                        <button type="button" id="nextQ" class="btn btn-info" style="position: absolute; right: 2%;">
+                            <span>Next</span>
                         </button>
 
                     </div>
@@ -347,6 +347,58 @@
                 // Get the CMS
                 xhttp.open("GET", "./queries/queries.json", true);
                 xhttp.send();
+
+                // Display content of previous page
+                $("#prevQ").click( function () {
+
+                    // Move in the slides
+                    slides.goToPreviousPage();
+
+                    // Update content
+                    let data = slides.getActiveElement();
+                    $("#blockTitle").text( data["Label"] );
+                    $("#queryBlock").text( data["Query"] );
+                });
+
+                // Display content of next page
+                $("#nextQ").click( function () {
+
+                    // Move in the slides
+                    slides.goToNextPage();
+
+                    // Update content
+                    let data = slides.getActiveElement();
+                    $("#blockTitle").text( data["Label"] );
+                    $("#queryBlock").text( data["Query"] );
+                });
+
+
+                // Display first page of next section
+                $("#tv-right").click( function () {
+
+                    // Move in the slides
+                    slides.goToNextSection();
+
+                    // Update content
+                    let data = slides.getActiveElement();
+                    $("#blockTitle").text( data["Label"] );
+                    $("#queryBlock").text( data["Query"] );
+
+                });
+
+
+                // Display first page of previous section
+                $("#tv-left").click( function () {
+
+                    // Move in the slides
+                    slides.goToPreviousSection();
+
+                    // Update content
+                    let data = slides.getActiveElement();
+                    $("#blockTitle").text( data["Label"] );
+                    $("#queryBlock").text( data["Query"] );
+
+                });
             });
 
         </script>
