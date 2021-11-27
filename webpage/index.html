@@ -160,24 +160,21 @@
                     </div>
                  -->
 
-                <!-- TV Div Template -->
+                <!--
+                    TV Div Template
+                        - Copy and paste the current CSS stylings
+                -->
                 <br><br>
-                <div class="tv" id="tvDiv" style="position: relative; height: 575px; width: 1200px; border: 3px solid black; margin: auto;" >
+                <div class="tv" id="tvDiv">
 
                     <!-- Navigate channels -->
-                    <div type="button" class="tv tv-nav" id="tv-left" style="position: absolute; width: 70px; height: 545px; border: 2px solid green; left: 10px; top: 15px; bottom: 15px;"></div>
-                    <div class="tv tv-nav" id="tv-right" style="position: absolute; width: 70px; height: 545px; border: 2px solid blue; right: 10px; top: 15px; bottom: 15px;"></div>
+                    <div type="button" class="tv-nav" id="tv-left"><span class="tv-chan" id="chanLeft">&#60;</span></div>
+                    <div class="tv-nav" id="tv-right"><span class="tv-chan" id="chanRight">&#62;</span></div>
 
                     <!-- Screen -->
-                    <div
-                        class="tv-content"
-                        style="position: absolute; width: auto; height: 470px; border: 2px solid red; left: 85px; right: 85px; top: 15px; bottom: 15px;"
-                    >
+                    <div class="tv-content">
 
-                        <div
-                            class="tv tv-screen"
-                            style="position: absolute; width:auto; height: auto; border: 2px solid blue; left: 5px; right: 5px; top: 5px; bottom: 5px;"
-                        >
+                        <div class="tv-screen">
 
                             <!-- Header / Query Label -->
                             <h5 id="blockTitle" class="modal-title">Welcome to the online HR Database App</h5>
@@ -192,7 +189,7 @@
                                 <p>From there you can navigate the queries for that section using the sidebar, or move to another section using the navigation buttons.</p>
 
                                 <!-- Simple Table -->
-                                <table class="table table-dark" style="position: absolute; bottom: 5px; ">
+                                <table id="resultsTable" class="table table-dark">
 
                                     <!-- Header -->
                                     <thead>
@@ -236,10 +233,10 @@
                     </div>
 
                     <!-- TV Buttons -->
-                    <div class="tv tv-btn" style="padding-top: 10px; position: absolute; bottom: 10px; border: 2px solid purple; left: 90px; right: 90px; width: auto; height: 65px;">
+                    <div class="tv-btns">
 
                         <!-- Go to first -->
-                        <button type="button" id="prevQ" class="btn btn-info" style="position: absolute; left: 2%;">
+                        <button type="button" id="prevQ" class="btn btn-primary">
                             <span>Previous</span>
                         </button>
 
@@ -247,7 +244,7 @@
                             Run Query
                                 - Will get the content of the active queryBlock
                         -->
-                        <button type="button" id="runQuery" class="btn btn-info" style="position: absolute; left: 35%;">
+                        <button type="button" id="runQuery" class="btn btn-success">
                             <span>Run Query</span>
                         </button>
 
@@ -255,12 +252,12 @@
                             Reset
                                 - Will set the results block to Pending / Empty
                         -->
-                        <button type="button" id="resetBtn" class="btn btn-info"style="position: absolute; right: 35%;">
+                        <button type="button" id="resetBtn" class="btn btn-danger">
                             <span>Reset</span>
                         </button>
 
                         <!-- Go to last -->
-                        <button type="button" id="nextQ" class="btn btn-info" style="position: absolute; right: 2%;">
+                        <button type="button" id="nextQ" class="btn btn-primary">
                             <span>Next</span>
                         </button>
 
@@ -380,7 +377,7 @@
 
 
                 // Display first page of next section
-                $("#tv-right").click( function () {
+                $("#chanRight").click( function () {
 
                     // Move in the slides
                     slides.goToNextSection();
@@ -394,7 +391,7 @@
 
 
                 // Display first page of previous section
-                $("#tv-left").click( function () {
+                $("#chanLeft").click( function () {
 
                     // Move in the slides
                     slides.goToPreviousSection();

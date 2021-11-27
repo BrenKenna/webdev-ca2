@@ -1,12 +1,17 @@
 /*
 * 
-* Stylings for side bar tutorial
+* Stylings, where excluding the TV-Div largely from Bootstrap:
+*   1. Core Page - Body, paragraph, links.
+*   2. Main Page - Wrapper, Container-Div, Nav/Sidebar.
+*   3. TV-Div Stylings.
+*   4. Table Stylings - Results Block of TV-Div.
+*   5. Media Queries.
 * 
 */
 
 /*
 * 
-* Core page stylings
+* 1. Core Page Stylings
 * 
 */
 
@@ -46,7 +51,7 @@ a, a:link, a:visited, a:hover, a:focus {
 
 /* 
 * 
-* Main css
+* 2. Main Page Stylings
 * 
 */
 
@@ -138,7 +143,131 @@ a[data-toggle="collapse"] {
 
 /*
 * 
-* Media queries
+* 4. TV Div:
+*   - Needs to better utilise the Grid System :(
+* 
+*/
+
+/* TV Class Styling */
+.tv{
+    position: relative;
+    border: 3px solid black;
+    margin: auto;
+
+    /*
+    *
+    * Figuring out these is the best way forward,
+    * other subsequent measures can be derived from
+    * here
+    * 
+    */
+    height: 575px; 
+    width: 1200px;
+}
+
+
+/* Left & Right Channels to swap between sections */
+.tv-nav {
+    position: absolute;
+    width: 70px; /* Can use X% of active width */
+    height: 545px; /* Should really be calculated */
+    border: 2px solid rgb(194, 81, 96);
+    top: 15px;
+    bottom: 15px;
+}
+
+.tv-nav:hover {
+    background-color: rgb(172, 155, 155);
+}
+
+.tv-chan {
+    position: absolute;
+    font-size: 5em;
+    font-weight: bold;
+    top: 35%;
+    width: 100%;
+    cursor: pointer;
+    left: 9%;
+}
+
+/* Place channels left or right */
+#tv-left {
+    left: 10px;
+}
+#tv-right {
+    right: 10px;
+}
+
+
+/* TV Content which holds the screen */
+.tv-content {
+    position: absolute;
+    width: auto;
+    height: 470px; /* Should really be calculated */
+    border: 2px solid red;
+    left: 85px;
+    right: 85px;
+    top: 15px;
+    bottom: 15px;
+}
+
+/* TV Screen that holds the Label, Query and Results boxes */
+.tv-screen {
+    position: absolute;
+    width:auto;
+    height: auto;
+    border: 2px solid blue;
+    left: 5px;
+    right: 5px;
+    top: 5px;
+    bottom: 5px;
+}
+
+/* TV Buttons */
+.tv-btns {
+    padding-top: 10px;
+    position: absolute;
+    bottom: 10px;
+    border: 2px solid purple;
+    left: 90px;
+    right: 90px;
+    width: auto;
+    height: 65px;
+}
+
+#prevQ {
+    position: absolute;
+    left: 2%;
+}
+#runQuery {
+    position: absolute;
+    left: 35%;
+}
+#resetBtn {
+    position: absolute;
+    right: 35%;
+}
+#nextQ {
+    position: absolute;
+    right: 2%;
+}
+
+
+/*
+* 
+* Table Stylings
+* 
+*/
+
+/* Simple stuff first :) */
+#resultsTable {
+    position: absolute;
+    bottom: 5px; 
+}
+
+/*
+* 
+* 5. Media Queries
 * 
 */
 
