@@ -72,6 +72,24 @@ Each query and their results can then be sent to a "*TV*" like div broken into o
   
 - Next stops are:
 
-  - Styling the TV-Div.
-  - Populating the table (data & column names are separate object fields).
+  - Styling the TV-Div:
+  
+    - Moved the inline stylings to a central external css file + added channel switches + btn colors.
+  
+    - Next to style is the Label (header), Query (obvious code block like grey or something) and Results box (copy and paste from previous).
+  
+    - Consider the grid system, CSS-calc for responsive stylings.
+  
+      
+  
+  - Populating the table (data & column names are separate object fields):
+  
+    - Empty the current result block & embed the result in html with class / id values in javascript loop over results
+  
+    - Read the sql-results header array => html
+  
+    - Read each results line array => html
+  
+      
+  
   - Tidy up the repo & index.html
