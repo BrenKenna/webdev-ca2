@@ -70,18 +70,18 @@ Each query and their results can then be sent to a "*TV*" like div broken into o
   
     
   
-- Next stops are:
+- Styling the TV-Div:
 
-  - Styling the TV-Div:
-  
-    - Moved the inline stylings to a central external css file + added channel switches + btn colors.
-  
-    - Next to style is the Label (header), Query (obvious code block like grey or something) and Results box (copy and paste from previous).
-  
-    - Consider the grid system, CSS-calc for responsive stylings.
-  
-      
-  
+  - Moved the inline stylings to a central external css file + added channel switches + btn colors.
+
+  - Next to style is the Label (header), Query (obvious code block like grey or something) and Results box (copy and paste from previous).
+
+  - Bulk of stylings are done, need to drop the boxes and it then consider next steps. For instance, left / right channels having height 100%.
+
+    
+
+- Next step = Populating the table
+
   - Populating the table (data & column names are separate object fields):
   
     - Empty the current result block & embed the result in html with class / id values in javascript loop over results
@@ -92,4 +92,28 @@ Each query and their results can then be sent to a "*TV*" like div broken into o
   
       
   
-  - Tidy up the repo & index.html
+- Tidy up:
+
+  - Start with the Slide-Show.js:
+
+    - Documentation & class descriptor.
+
+    - Ordering of methods.
+
+      
+
+  - HTML:
+
+    - Comments and drop any commented blocks.
+
+      
+
+  - CSS:
+
+    - Make it "CTRL+F"-able.
+
+      
+
+  - JS on index.html (On completion):
+
+    - What can be off loaded into another module / collection functions (index.html should not be too big).
