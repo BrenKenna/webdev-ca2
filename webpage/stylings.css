@@ -140,6 +140,9 @@ a[data-toggle="collapse"] {
     transform: translateY(-50%);
 }
 
+#runAllQueries, #toggleSidebar, #prevQ, #runQuery, #resetBtn, #nextQ{
+    border: 1.5px solid black;
+}
 
 /*
 * 

@@ -110,9 +110,11 @@
                 </ul>
 
                 <!-- Run 'em All Button-->
-                <button type="button" id="runAllQueries" class="btn btn-info">
-                    <span>Run All Queries</span>
-                </button>
+                <div class="d-flex justify-content-center">
+                    <button type="button" id="runAllQueries" class="btn btn-success">
+                        <span>Run All Queries</span>
+                    </button>
+                </div>
 
             </nav>
 
@@ -128,7 +130,7 @@
                         </button>
 
 
-                        <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <button id="toggleSidebar" class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                             <i class="fas fa-align-justify"></i>
                             <span>View Pages</span>
                         </button>
@@ -168,7 +170,7 @@
                 <div class="tv container" id="tvDiv">
 
                     <!-- Navigate channels -->
-                    <div type="button" class="tv-nav" id="tv-left"><span class="tv-chan" id="chanLeft">&#60;</span></div>
+                    <div class="tv-nav" id="tv-left"><span class="tv-chan" id="chanLeft">&#60;</span></div>
                     <div class="tv-nav" id="tv-right"><span class="tv-chan" id="chanRight">&#62;</span></div>
 
                     <!-- Screen -->
