@@ -69,7 +69,7 @@ class SlideShow {
     /**
      * Go to page
      */
-     goToPage(section, page) {
+    goToPage(section, page) {
 
         // Set section
         this.#currentSection = this.#sectionIDs.indexOf(section);
@@ -78,6 +78,17 @@ class SlideShow {
         // Set page in section
         this.#currentPage = this.#pageIDs.indexOf(page);
 
+    }
+
+    /**
+     * Go to section
+     */
+    goToSection(section) {
+
+        // Set section
+        this.#currentSection = this.#sectionIDs.indexOf(section);
+        this.setPages( this.#currentSection );
+        this.#currentPage = 0;
     }
 
     // 
