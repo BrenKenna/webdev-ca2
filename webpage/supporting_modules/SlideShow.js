@@ -24,10 +24,6 @@ class SlideShow {
     #sectionPages = 0;
     #currentSection = -1;
     #currentPage = -1;
-    #firstSection = -1;
-    #lastSection= -1;
-    #firstPage = -1;
-    #lastPage = -1;
     #sectionIDs = [];
     #pageIDs = [];
 
@@ -41,10 +37,6 @@ class SlideShow {
         this.#sectionPages = 0;
         this.#currentSection = -1;
         this.#currentPage = -1;
-        this.#firstSection = -1;
-        this.#lastSection = -1;
-        this.#firstPage = -1;
-        this.#lastPage = -1;
     }
 
     /**
@@ -72,6 +64,20 @@ class SlideShow {
         let sectionID = Object.keys(this.#dataset)[section];
         this.#pageIDs = Object.keys(this.#dataset[sectionID]);
         this.#sectionPages = this.#pageIDs.length-1;
+    }
+
+    /**
+     * Go to page
+     */
+     goToPage(section, page) {
+
+        // Set section
+        this.#currentSection = this.#sectionIDs.indexOf(section);
+        this.setPages( this.#currentSection );
+
+        // Set page in section
+        this.#currentPage = this.#pageIDs.indexOf(page);
+
     }
 
     // 

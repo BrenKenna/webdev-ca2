@@ -161,7 +161,7 @@ a[data-toggle="collapse"] {
     * here
     * 
     */
-    height: 575px; 
+    height: 600px; 
     width: 1200px;
 }
 
@@ -170,7 +170,7 @@ a[data-toggle="collapse"] {
 .tv-nav {
     position: absolute;
     width: 70px; /* Can use X% of active width */
-    height: 545px; /* Should really be calculated */
+    height: 570px; /* Should really be calculated */
     border: 2px solid rgb(194, 81, 96);
     top: 15px;
     bottom: 15px;
@@ -203,24 +203,44 @@ a[data-toggle="collapse"] {
 .tv-content {
     position: absolute;
     width: auto;
-    height: 470px; /* Should really be calculated */
-    border: 2px solid red;
+    height: 495px; /* Should really be calculated */
+    /* border: 2px solid red; */
     left: 85px;
     right: 85px;
-    top: 15px;
-    bottom: 15px;
+    top: 10px;
+    bottom: 10px;
 }
 
 /* TV Screen that holds the Label, Query and Results boxes */
 .tv-screen {
     position: absolute;
-    width:auto;
+    width: auto;
     height: auto;
     border: 2px solid blue;
-    left: 5px;
-    right: 5px;
     top: 5px;
-    bottom: 5px;
+    bottom: 0;
+}
+
+/* Space items on the scren a little better*/
+.tv-item{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    /* border: 2px solid red; */
+}
+
+#blockTitle{
+    height: 8%;
+}
+#queryBlock{
+    height: 23%;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    background-color: rgb(189, 182, 182);
+    font-weight: bold;
+    font-style: italic;
+    padding-left: 1.5%;
+    padding-right: 1.5%;
 }
 
 /* TV Buttons */
@@ -241,11 +261,11 @@ a[data-toggle="collapse"] {
 }
 #runQuery {
     position: absolute;
-    left: 35%;
+    left: 30%;
 }
 #resetBtn {
     position: absolute;
-    right: 35%;
+    right: 30%;
 }
 #nextQ {
     position: absolute;
@@ -259,10 +279,35 @@ a[data-toggle="collapse"] {
 * 
 */
 
-/* Simple stuff first :) */
+/* Table div */
+#resultsBlock {
+    position: relative;
+    overflow: auto;
+    display: block;
+    height: 60%;
+
+    /* Clear the margin */
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+/* Clear bottom margin to stop it from
+   breaching into the button layer
+*/
 #resultsTable {
-    position: absolute;
-    bottom: 5px; 
+    margin-bottom: 0px;
+    background-color: rgb(115,134,213);
+}
+
+
+/* Additional table stylings */
+#colHead {
+    position: sticky;
+    top: 0;
+}
+
+.table {
+    color: rgb(255,255,255);
 }
 
 /*

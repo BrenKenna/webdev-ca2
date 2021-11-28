@@ -69,13 +69,13 @@
                         <a href="#section1_menu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Section 1 Queries</a>
                         <ul class="collapse list-unstyled" id="section1_menu">
                             <li>
-                                <a id="Section1_Query1" href="#">Query 1</a>
+                                <a class="SectionQuery" id="Section1_Query1" href="#">Query 1</a>
                             </li>
                             <li>
-                                <a id="Section1_Query2" href="#">Query 2</a>
+                                <a class="SectionQuery" id="Section1_Query2" href="#">Query 2</a>
                             </li>
                             <li>
-                                <a id="Section1_Query3" href="#">Query 3</a>
+                                <a class="SectionQuery" id="Section1_Query3" href="#">Query 3</a>
                             </li>
                         </ul>
                     </li>
@@ -83,13 +83,13 @@
                         <a href="#section2_menu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Section 2 Queries</a>
                         <ul class="collapse list-unstyled" id="section2_menu">
                             <li>
-                                <a id="Section2_Query1" href="#">Query 1</a>
+                                <a class="SectionQuery" id="Section2_Query1" href="#">Query 1</a>
                             </li>
                             <li>
-                                <a id="Section2_Query2" href="#">Query 2</a>
+                                <a class="SectionQuery" id="Section2_Query2" href="#">Query 2</a>
                             </li>
                             <li>
-                                <a id="Section2_Query3" href="#">Query 3</a>
+                                <a class="SectionQuery" id="Section2_Query3" href="#">Query 3</a>
                             </li>
                         </ul>
                     </li>
@@ -97,13 +97,13 @@
                         <a href="#section3_menu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Section 3 Queries</a>
                         <ul class="collapse list-unstyled" id="section3_menu">
                             <li>
-                                <a id="Section3_Query1" href="#">Query 1</a>
+                                <a class="SectionQuery" id="Section3_Query1" href="#">Query 1</a>
                             </li>
                             <li>
-                                <a id="Section3_Query2" href="#">Query 2</a>
+                                <a class="SectionQuery" id="Section3_Query2" href="#">Query 2</a>
                             </li>
                             <li>
-                                <a id="Section3_Query3" href="#">Query 3</a>
+                                <a class="SectionQuery" id="Section3_Query3" href="#">Query 3</a>
                             </li>
                         </ul>
                     </li>
@@ -164,8 +164,8 @@
                     TV Div Template
                         - Copy and paste the current CSS stylings
                 -->
-                <br><br>
-                <div class="tv" id="tvDiv">
+                <br>
+                <div class="tv container" id="tvDiv">
 
                     <!-- Navigate channels -->
                     <div type="button" class="tv-nav" id="tv-left"><span class="tv-chan" id="chanLeft">&#60;</span></div>
@@ -174,25 +174,27 @@
                     <!-- Screen -->
                     <div class="tv-content">
 
-                        <div class="tv-screen">
+                        <div class="tv-screen container-fluid">
 
                             <!-- Header / Query Label -->
-                            <h5 id="blockTitle" class="modal-title">Welcome to the online HR Database App</h5>
+                            <div id="blockTitle" class="text-center tv-item">
+                                <h3 id="blockHeading" class="modal-title">Welcome to the online HR Database App</h3>
+                            </div>
 
                             <!-- Query Code Block -->
-                            <div id="queryBlock">
-                                <p>Use the sidebar on the left to navigate to a specific query, or the navigation buttons on the top right.</p>
+                            <div id="queryBlock" class="tv-item text-justify">
+                                <p id="queryText">Use the sidebar on the left to navigate to a specific query, or the navigation buttons on the top right.</p>
                             </div>
 
                             <!-- Results -->
-                            <div id="resultsBlock">
-                                <p>From there you can navigate the queries for that section using the sidebar, or move to another section using the navigation buttons.</p>
+                            <div id="resultsBlock" class="tv-item">
+                                
 
                                 <!-- Simple Table -->
-                                <table id="resultsTable" class="table table-dark">
+                                <table id="resultsTable" class="table">
 
                                     <!-- Header -->
-                                    <thead>
+                                    <thead id="colHead">
                                     <tr>
                                         <th scope="col">#</th>
                                         <th scope="col">emp_id</th>
@@ -220,6 +222,27 @@
                                         </tr>
                                         <tr>
                                             <th scope="row">3</th>
+                                            <td>4589</td>
+                                            <td>Bill</td>
+                                            <td>Joe</td>
+                                            <td>18/04/1990</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">4</th>
+                                            <td>4589</td>
+                                            <td>Bill</td>
+                                            <td>Joe</td>
+                                            <td>18/04/1990</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">5</th>
+                                            <td>4589</td>
+                                            <td>Bill</td>
+                                            <td>Joe</td>
+                                            <td>18/04/1990</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">6</th>
                                             <td>4589</td>
                                             <td>Bill</td>
                                             <td>Joe</td>
@@ -341,9 +364,9 @@
 
                         // Update content from the TV-Div
                         let data =  slides.getActiveElement();
-                        $("#blockTitle").text( data["Label"] );
+                        $("#blockHeading").text( data["Label"] );
                         $("#queryBlock").text( data["Query"] );
-                        $("#resultsBlock").text("\nResults Pending");
+                        // $("#resultsBlock").text("\nResults Pending");
                     }
                 };
 
@@ -359,7 +382,7 @@
 
                     // Update content
                     let data = slides.getActiveElement();
-                    $("#blockTitle").text( data["Label"] );
+                    $("#blockHeading").text( data["Label"] );
                     $("#queryBlock").text( data["Query"] );
                 });
 
@@ -371,7 +394,7 @@
 
                     // Update content
                     let data = slides.getActiveElement();
-                    $("#blockTitle").text( data["Label"] );
+                    $("#blockHeading").text( data["Label"] );
                     $("#queryBlock").text( data["Query"] );
                 });
 
@@ -384,7 +407,7 @@
 
                     // Update content
                     let data = slides.getActiveElement();
-                    $("#blockTitle").text( data["Label"] );
+                    $("#blockHeading").text( data["Label"] );
                     $("#queryBlock").text( data["Query"] );
 
                 });
@@ -398,9 +421,29 @@
 
                     // Update content
                     let data = slides.getActiveElement();
-                    $("#blockTitle").text( data["Label"] );
+                    $("#blockHeading").text( data["Label"] );
                     $("#queryBlock").text( data["Query"] );
 
+                });
+
+                // Handle selecting list class items
+                $(".SectionQuery").click(function () {
+
+                    // Initalize variables
+                    let elmID, section, query, data;
+
+                    // Get elementID to set position
+                    elmID = this.id;
+                    section = elmID.split("_")[0];
+                    query = elmID.split("_")[1];
+                    
+                    // Set postion in slide show
+                    slides.goToPage(section, query);
+
+                    // Set page content
+                    data = slides.getActiveElement();
+                    $("#blockHeading").text( data["Label"] );
+                    $("#queryBlock").text( data["Query"] );
                 });
             });
 
