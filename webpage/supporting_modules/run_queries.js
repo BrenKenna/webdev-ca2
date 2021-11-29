@@ -15,6 +15,7 @@ function manageQueries(query) {
         if (this.readyState == 4 && this.status == 200) {
                 
             // Instantiate db object from response
+            // Memory exceeds 16.7MB (16,777,216)
             console.log("\nSetting up database");
             db = new SQL.Database( new Uint8Array(xhttp.response) );
 
@@ -23,7 +24,6 @@ function manageQueries(query) {
             results = db.exec(query);
             db = null;
             columns = results[0]["columns"];
-            console.dir(results, {depth: null});
 
             /**
              * Serve the colHead content
@@ -37,7 +37,6 @@ function manageQueries(query) {
 
             // Close colHead
             colHead = colHead + "</tr>";
-            console.log(colHead);
 
             // Set content and clear table body
             $("#colHead").html(colHead);
