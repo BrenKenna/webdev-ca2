@@ -22,7 +22,7 @@ function manageQueries(query) {
             // Run query
             counter = 1;
             results = db.exec(query);
-            db = null;
+            db.close();
             columns = results[0]["columns"];
 
             /**
@@ -84,12 +84,12 @@ function manageQueries(query) {
 
                 counter++;
             }
-            console.log(`Query complete with N rows = ${counter}`);
+            console.log(`Query complete with N rows = ${counter-1}`);
 
             // Clean up
             data = [];
             results = null;
-            xhttp = null;
+            // xhttp = null;
 
             /**  List variable names
             for (let name in this) {
