@@ -93,6 +93,8 @@ Each query and their results can then be sent to a "*TV*" like div broken into o
     - Problem is that database is massive and is read into a response, then read into another object.
     - Although the results + db objects are reset to null, memory issues still persist.
     - Cannot find a way to clear the xhttp.response when done.
+    - Fixed by closing the db connection instead of setting to null.
+    - Need to fix updating the content when navigation buttons are pressed + add function to Reset.
     
     
   
