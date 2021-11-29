@@ -85,12 +85,16 @@ Each query and their results can then be sent to a "*TV*" like div broken into o
   - Populating the table (data & column names are separate object fields):
   
     - Empty the current result block & embed the result in html with class / id values in javascript loop over results
-  
-    - Read the sql-results header array => html
-  
+  - Read the sql-results header array => html
     - Read each results line array => html
   
-      
+  - The action is straight forward enough:
+  
+    - Problem is that database is massive and is read into a response, then read into another object.
+    - Although the results + db objects are reset to null, memory issues still persist.
+    - Cannot find a way to clear the xhttp.response when done.
+    
+    
   
 - Tidy up:
 
