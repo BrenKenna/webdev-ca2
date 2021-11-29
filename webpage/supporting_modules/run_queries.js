@@ -1,4 +1,24 @@
-// Function(s) to help populating the table div
+/**
+ * Get database:
+ *  wget https://github.com/siara-cc/employee_db/raw/master/employees.db.bz2
+ * 
+ * Unzip:
+ *  bzip2 -d employees.db.bz2 
+ * 
+ * - Figure out optimizing handling the database after all button 
+ *   functionality has been implemented.
+ *
+ */
+
+
+/**
+ * Function to fetch database to run query.
+ * The combo used here is really slow, can see why they
+ * used a worker. So perhaps better to incorporate fetching 
+ * & connecting to the database as part of the loading.
+ * 
+ * @param {Query to execute} query 
+ */
 function manageQueries(query) {
 
     // Initial needed variables
