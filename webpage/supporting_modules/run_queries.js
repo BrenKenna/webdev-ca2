@@ -17,7 +17,6 @@
  * used a worker. So perhaps better to incorporate fetching 
  * & connecting to the database as part of the loading.
  * 
- * @param {Query to execute} query 
  */
 function manageQueries(query) {
 

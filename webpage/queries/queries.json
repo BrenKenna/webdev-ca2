@@ -36,11 +36,11 @@
         },
         "Query2": {
             "Label": "List Count of Postitions Held Per Employees",
-            "Query": "SELECT emp_id, COUNT(DISTINCT title) AS 'N_Titles' FROM titles GROUP BY emp_id HAVING N_Titles >= 2 ORDER BY N_Titles LIMIT 15;"
+            "Query": "SELECT emp_id, COUNT(DISTINCT title) AS 'N_Titles' FROM titles GROUP BY emp_id HAVING N_Titles >= 2 ORDER BY N_Titles DESC LIMIT 15;"
         },
         "Query3": {
             "Label": "Count Active Salaries Between 90,000 - 90,004",
-            "Query": "SELECT COUNT(DISTINCT emp_id) AS 'Employee Count' FROM salaries WHERE to_date = '9999-01-01' AND salary BETWEEN(90000 AND 90004);"
+            "Query": "SELECT COUNT(DISTINCT emp_id) AS 'Employee Count' FROM salaries WHERE to_date = '9999-01-01' AND (salary BETWEEN 90000 AND 90004);"
         }
     }
 }
