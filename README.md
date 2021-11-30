@@ -85,16 +85,25 @@ Each query and their results can then be sent to a "*TV*" like div broken into o
   - Populating the table (data & column names are separate object fields):
   
     - Empty the current result block & embed the result in html with class / id values in javascript loop over results
+    
+      
   - Read the sql-results header array => html
     - Read each results line array => html
   
+      
+    
   - The action is straight forward enough:
   
     - Problem is that database is massive and is read into a response, then read into another object.
     - Although the results + db objects are reset to null, memory issues still persist.
-    - Cannot find a way to clear the xhttp.response when done.
     - Fixed by closing the db connection instead of setting to null.
-    - Need to fix updating the content when navigation buttons are pressed + add function to Reset.
+    - Fixed updating the content when navigation buttons are pressed + added function to Reset.
+    - Trying to add block on navigating while a query is active:
+      - Managed by a global boolean variable that is checked before updating the TV-Div.
+      - Maybe better to have an AJAX call to return the database.
+      - Queries then use connection, also speeds up the time.
+      - Long-term moving to another page, re-creates this db connection.
+      - Can you open and close a connection with SQL.js (Bit much, but curious)?
     
     
   
