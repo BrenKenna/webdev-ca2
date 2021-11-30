@@ -7,18 +7,13 @@
  * 
  * - Figure out optimizing handling the database after all button 
  *   functionality has been implemented.
- *
- */
-
+*/
 
 /**
- * Function to fetch database to run query.
- * The combo used here is really slow, can see why they
- * used a worker. So perhaps better to incorporate fetching 
- * & connecting to the database as part of the loading.
- * 
+ * Function to manage running queries to the connected database
+ * & and delivery the results as content to the TV-Div
  */
-function manageQueries(query, activeQuery) {
+function manageQueries(query) {
 
     // Initial needed variables & inform user of table loading
     let xhttp, db, counter, results, row, columns, out, colHead, col, data;
@@ -112,9 +107,7 @@ function manageQueries(query, activeQuery) {
 
             // Clean up
             data = [];
-            results = null;
-            activeQuery = false;
-            return activeQuery;      
+            results = null;    
         }
     };
 }
