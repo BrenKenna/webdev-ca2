@@ -86,7 +86,6 @@ Each query and their results can then be sent to a "*TV*" like div broken into o
   
     - Empty the current result block & embed the result in html with class / id values in javascript loop over results
     
-      
   - Read the sql-results header array => html
     - Read each results line array => html
   
@@ -103,7 +102,11 @@ Each query and their results can then be sent to a "*TV*" like div broken into o
       - Maybe better to have an AJAX call to return the database.
       - Queries then use connection, also speeds up the time.
       - Long-term moving to another page, re-creates this db connection.
-      - Can you open and close a connection with SQL.js (Bit much, but curious)?
+      - Addressed speed by storing the binary array as variable, that a separate creates a DB + closes connection to.
+      - Section1-Query2 breaks page for both versions, check bugs.
+      - Current approach now allows for blocking navigation during queries + fixes speed issues.
+    - I can now have the index.html read the example 3 queries for 3 sections, then also link out to the sectionYYZ page for all of its queries <= Core website done, and apply touch-ups.
+      - Once done look at a loading icon for the resultsBlock, a big white space is not appealing.
     
     
   
