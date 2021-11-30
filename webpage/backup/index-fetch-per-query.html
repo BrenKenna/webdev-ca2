@@ -254,28 +254,13 @@
 
             // Import modules
             import SlideShow from './supporting_modules/SlideShow.js';
-            import {manageQueries} from './supporting_modules/run_queries.js';
+            import {manageQueries, manageQueries_old} from './supporting_modules/run_queries.js';
 
             // Initalize required variables
             let xhttp, updated;
             let slides, empDB;
             let activeQuery = false;
             slides = new SlideShow();
-
-            // Request database
-            let db_xhttp = new XMLHttpRequest();
-            db_xhttp.open("GET", "./database/employees.db", true);
-            db_xhttp.responseType = 'arraybuffer';
-            db_xhttp.send();
-            db_xhttp.onreadystatechange = function() {
-                if (db_xhttp.readyState == 4 && db_xhttp.status == 200) {
-
-                    // Instantiate db object from response
-                    console.log("\nSetting up database");
-                    empDB = new Uint8Array(db_xhttp.response);
-                    db_xhttp = null;
-                }
-            };
 
             // Make page interactive once loaded
             $(document).ready(function () {
@@ -320,7 +305,6 @@
                         let data =  slides.getActiveElement();
                         $("#blockHeading").text( data["Label"] );
                         $("#queryBlock").text( data["Query"] );
-                        xhttp = null;
                     }
                 };
 
@@ -473,7 +457,7 @@
                      * 
                      */
                     console.log("Query active = " + activeQuery);
-                    manageQueries(empDB, data['Query']);
+                    manageQueries_old(data['Query']);
                     activeQuery = false;
                     console.log("Query active = " + activeQuery);
                 });
