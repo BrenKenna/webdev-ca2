@@ -106,6 +106,7 @@ Each query and their results can then be sent to a "*TV*" like div broken into o
       - Section1-Query2 breaks page for both versions, check bugs.
       - Current approach now allows for blocking navigation during queries + fixes speed issues.
     - I can now have the index.html read the example 3 queries for 3 sections, then also link out to the sectionYYZ page for all of its queries <= Core website done, and apply touch-ups.
+      - Once done look at a loading icon for the resultsBlock, a big white space is not appealing.
     
     
   
