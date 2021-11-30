@@ -269,6 +269,7 @@
             // Initalize required variables
             let xhttp, updated;
             let slides, myCMS;
+            let activeQuery = false;
             slides = new SlideShow();
             setInterval("", 5000);
 
@@ -324,21 +325,30 @@
                 // Display content of previous page
                 $("#prevQ").click( function () {
 
-                    // Move in the slides
-                    slides.goToPreviousPage();
+                    // Allow movement if not actively querying
+                    if( !activeQuery ) {
 
-                    // Update content
-                    let data = slides.getActiveElement();
-                    $("#blockHeading").text( data["Label"] );
-                    $("#queryBlock").text( data["Query"] );
+                        // Move in the slides
+                        slides.goToPreviousPage();
 
-                    // Update the results table
-                    $("#resultsBlock").html(`
-                        <table id="resultsTable" class="table">
-                            <thead id="colHead"><br><br>Press the Run Query Button</thead>
-                            <tbody id="resultsBody"><br>To view your results</tbody>
-                        </table>
-                    `);
+                        // Update content
+                        let data = slides.getActiveElement();
+                        $("#blockHeading").text( data["Label"] );
+                        $("#queryBlock").text( data["Query"] );
+
+                        // Update the results table
+                        $("#resultsBlock").html(`
+                            <table id="resultsTable" class="table">
+                                <thead id="colHead"><br><br>Press the Run Query Button</thead>
+                                <tbody id="resultsBody"><br>To view your results</tbody>
+                            </table>
+                        `);
+                    } else {
+
+                        // Otherwise raise an alert
+                        window.alert("Warning! Cannot navigate while a query is in progress.");
+                    }
+                    
                 });
 
                 // Display content of next page
@@ -460,6 +470,7 @@
 
                     // Get the active section
                     let data, results;
+                    activeQuery = true;
                     data = slides.getActiveElement();
 
                     /**
@@ -467,7 +478,7 @@
                      * 
                      * results = 
                      */
-                    manageQueries(data["Query"]);
+                    manageQueries(data["Query"], activeQuery);
                 });
 
 

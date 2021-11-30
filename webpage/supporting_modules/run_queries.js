@@ -18,7 +18,7 @@
  * & connecting to the database as part of the loading.
  * 
  */
-function manageQueries(query) {
+function manageQueries(query, activeQuery) {
 
     // Initial needed variables & inform user of table loading
     let xhttp, db, counter, results, row, columns, out, colHead, col, data;
@@ -112,7 +112,9 @@ function manageQueries(query) {
 
             // Clean up
             data = [];
-            results = null;            
+            results = null;
+            activeQuery = false;
+            return activeQuery;      
         }
     };
 }
