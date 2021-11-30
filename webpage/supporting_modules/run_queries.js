@@ -20,23 +20,34 @@
  */
 function manageQueries(query) {
 
-    // Initial needed variables
+    // Initial needed variables & inform user of table loading
     let xhttp, db, counter, results, row, columns, out, colHead, col, data;
     console.log(query);
-    $("#resultsBody").html("<p style='color: black; font-weight: bold;'>Results Pending</p>");
+    $("#resultsBlock").html(`<br><br><h4>Results Pending</h4>`);
 
+    // Instantiate xhttp & send request for SQLite DB as an array buffer
+    xhttp = new XMLHttpRequest();
+    xhttp.open("GET", "./database/employees.db", true);
+    xhttp.responseType = 'arraybuffer';
+    xhttp.send();
 
     // Handle the request response
-    xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
 
-        // Only go forward on successful request
+        // Only go forward on a successful request
         if (this.readyState == 4 && this.status == 200) {
                 
             // Instantiate db object from response
-            // Memory exceeds 16.7MB (16,777,216)
             console.log("\nSetting up database");
             db = new SQL.Database( new Uint8Array(xhttp.response) );
+
+            // Reset table
+            $("#resultsBlock").html(`
+                <table id="resultsTable" class="table">
+                    <thead id="colHead"></thead>
+                    <tbody id="resultsBody"></tbody>
+                </table>
+            `);
 
             // Run query
             counter = 1;
@@ -59,13 +70,8 @@ function manageQueries(query) {
 
             // Set content and clear table body
             $("#colHead").html(colHead);
-            $("#resultsBody").html("Results Pending");
 
-
-            /**
-             * Serve results: console log, then table
-             *  - Would a callback to another function be better here?
-             */
+            // Serve results to tableDiv
             data = [];
              for(row of results[0]["values"]){
                 
@@ -100,38 +106,15 @@ function manageQueries(query) {
                     console.log("Pushing count");
                     $("#resultsBody").html(data.toString());
                 }
-
                 counter++;
             }
             console.log(`Query complete with N rows = ${counter-1}`);
 
             // Clean up
             data = [];
-            results = null;
-            // xhttp = null;
-
-            /**  List variable names
-            for (let name in this) {
-                console.log("this[" + name + "]=" + this[name]);
-            }
-
-            cache.delete("employees.db").then(function(found) {
-                // your cache entry has been deleted if found
-                console.log("deleted employees.db from cache");
-            });
-            */
-
-            
+            results = null;            
         }
     };
-
-
-    // Get database as an arraybuffer
-    xhttp.open("GET", "./database/employees.db", true);
-    xhttp.responseType = 'arraybuffer';
-
-    // Send request
-    xhttp.send();
 }
 
 // Export the manage queries function

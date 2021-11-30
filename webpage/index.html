@@ -195,63 +195,8 @@
 
                                 <!-- Simple Table -->
                                 <table id="resultsTable" class="table">
-
-                                    <!-- Header -->
-                                    <thead id="colHead">
-                                    <tr>
-                                        <th scope="col">#</th>
-                                        <th scope="col">emp_id</th>
-                                        <th scope="col">First Name</th>
-                                        <th scope="col">Last Name</th>
-                                        <th scope="col">Date of Birth</th>
-                                    </tr>
-                                    </thead>
-
-                                    <!-- Body -->
-                                    <tbody id="resultsBody">
-                                        <tr>
-                                            <th scope="row">1</th>
-                                            <td>1147</td>
-                                            <td>John</td>
-                                            <td>Doe</td>
-                                            <td>06/06/1987</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">2</th>
-                                            <td>329</td>
-                                            <td>Jane</td>
-                                            <td>Doe</td>
-                                            <td>23/10/1980</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">3</th>
-                                            <td>4589</td>
-                                            <td>Bill</td>
-                                            <td>Joe</td>
-                                            <td>18/04/1990</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">4</th>
-                                            <td>4589</td>
-                                            <td>Bill</td>
-                                            <td>Joe</td>
-                                            <td>18/04/1990</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">5</th>
-                                            <td>4589</td>
-                                            <td>Bill</td>
-                                            <td>Joe</td>
-                                            <td>18/04/1990</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">6</th>
-                                            <td>4589</td>
-                                            <td>Bill</td>
-                                            <td>Joe</td>
-                                            <td>18/04/1990</td>
-                                        </tr>
-                                    </tbody>
+                                    <thead id="colHead"><br><br>Press the Run Query Button</thead>
+                                    <tbody id="resultsBody"><br>To view your results</tbody>
                                 </table>
                             </div>
 
@@ -478,6 +423,17 @@
                      * results = 
                      */
                     manageQueries(data["Query"]);
+                });
+
+
+                // Reset table
+                $("#resetBtn").click( function() {
+                    $("#resultsBlock").html(`
+                        <table id="resultsTable" class="table">
+                            <thead id="colHead"><br><br>Press the Run Query Button</thead>
+                            <tbody id="resultsBody"><br>To view your results</tbody>
+                        </table>
+                    `);
                 });
             });
 
