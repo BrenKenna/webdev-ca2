@@ -17,6 +17,7 @@
         --> 
         <script type="module" src="../supporting_modules/SlideShow.js"></script>
         <script type="module" src="../supporting_modules/run_queries.js"></script>
+        <script type="module" src="../supporting_modules/set-tv-content.js"></script>
 
         <!-- SQL.js -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/0.2.4/js/sql.js"></script>
@@ -227,10 +228,12 @@
             // Import modules
             import SlideShow from '../supporting_modules/SlideShow.js';
             import {manageQueries} from '../supporting_modules/run_queries.js';
+            import {set_TV_Loader, set_TV_PendingResults} from '../supporting_modules/set-tv-content.js';
 
             // Initalize required variables
             let xhttp, updated;
             let slides, empDB;
+            set_TV_Loader();
             let activeQuery = false;
             slides = new SlideShow();
 
@@ -246,6 +249,12 @@
                     console.log("\nSetting up database");
                     empDB = new Uint8Array(db_xhttp.response);
                     db_xhttp = null;
+                    set_TV_PendingResults();
+
+                    // Update content from the TV-Div
+                    let data = slides.getActiveElement();
+                    $("#blockHeading").text( data["Label"] );
+                    $("#queryBlock").text( data["Query"] );
                 }
             };
 
@@ -281,7 +290,7 @@
                         dataset = { "Section2": dataset[sectionID] };
                         slides.setdataset(dataset);
 
-                        // Setting the query label
+                        // Update sidebar
                         for(queryID in slides.getDataset()[sectionID] ) {
 
                             // Set menu id
@@ -303,11 +312,6 @@
                                 $(`#${menuID}`).text( queryLabel );
                             }
                         }
-
-                        // Update content from the TV-Div
-                        let data = slides.getActiveElement();
-                        $("#blockHeading").text( data["Label"] );
-                        $("#queryBlock").text( data["Query"] );
                         xhttp = null;
                     }
                 };
