@@ -127,7 +127,9 @@ Each query and their results can then be sent to a "*TV*" like div broken into o
       - When I print the element IDs within the class for the base 3 I can see all elements listed as they should be.
       - Indicating that everything should work normal.
       - When I click the new elements, nothing happens & am not sure how to debug this.
-  
+      - $("class / ID") is for static content, $(document).delegate() is for dynamic content :).
+      - Given all the hard stuff that was made simple, review the DOM documentation in Javascript.
+    
     
   
 - Tidy up:
