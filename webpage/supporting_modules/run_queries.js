@@ -10,7 +10,8 @@
 */
 
 /**
- * Read database
+ * Read database from local storage path.
+ *  Not exported because copy & paste is buggey
  */
  function readDatabase (dbPath) {
 	var l = dbPath.length,
