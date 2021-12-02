@@ -117,19 +117,29 @@ Each query and their results can then be sent to a "*TV*" like div broken into o
       
         
     
-  - Added the section pages & restricted the Slide-Show.js to only load active section:
+- Added the section pages & restricted the Slide-Show.js to only load active section:
   
-    - Navigation buttons now move between pages, and channel switches are locked with an alert message.
-    - All queries for all section pages are navigable by in the TV-Div.
-    - Adding the unknown amount of queries to the sidebar is fine.
-    - Managing the JSON object threw up some string errors, so hardcoded for now.
-    - New elements in the sidebar after the base 3 are not clickable, despite them being present:
-      - When I print the element IDs within the class for the base 3 I can see all elements listed as they should be.
-      - Indicating that everything should work normal.
-      - When I click the new elements, nothing happens & am not sure how to debug this.
-      - $("class / ID") is for static content, $(document).delegate() is for dynamic content :).
-      - Given all the hard stuff that was made simple, review the DOM documentation in Javascript.
+  - Navigation buttons now move between pages, and channel switches are locked with an alert message.
+  - All queries for all section pages are navigable by in the TV-Div.
+  - Adding the unknown amount of queries to the sidebar is fine.
+  - Managing the JSON object threw up some string errors, so hardcoded for now.
+  - New elements in the sidebar after the base 3 are not clickable, despite them being present:
+    - When I print the element IDs within the class for the base 3 I can see all elements listed as they should be.
+    - Indicating that everything should work normal.
+    - When I click the new elements, nothing happens & am not sure how to debug this.
+    - $("class / ID") is for static content, $(document).delegate() is for dynamic content :).
+    - Given all the hard stuff that was made simple, review the DOM documentation in Javascript.
+
+
+- Added a loader to indicate that the database is being fetched:
+  - Mild tweek is some text to explain what is happening.
+  - The text has a margin-top instead of basing it on constantly circulating div.
     
+
+- Settle on the TV-Div stylings while tidying up other elements.
+  - Use other queries instead of SQL.js buggey / db.run() for describe.
+  - Combine "run_queries.js" with "set-tv-conent.js" into "TV-DB-Utils.js".
+    - Consider any other useful functions along the way to make the index.html less busy.
     
   
 - Tidy up:

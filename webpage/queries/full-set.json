@@ -18,7 +18,7 @@
 
         "Query4": {
             "Label": "List Department Attributes",
-            "Query": "DESCRIBE departments;"
+            "Query": "DESCRIBE departments"
         },
 
         "Query5": {
