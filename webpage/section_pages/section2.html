@@ -369,7 +369,7 @@
                 });
 
                 // Handle selecting list class items
-                $(".SectionQuery").click(function () {
+                $(document).delegate(".SectionQuery", "click", function () {
 
                     // Initalize variables
                     let elmID, section, query, data;

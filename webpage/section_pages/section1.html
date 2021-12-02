@@ -369,18 +369,15 @@
                 });
 
                 // Handle selecting list class items
-                $(".SectionQuery").click(function () {
+                $(document).delegate(".SectionQuery", "click", function () {
 
                     // Initalize variables
                     let elmID, section, query, data;
 
                     // Get elementID to set position
                     elmID = this.id;
-                    console.log( this.id );
                     section = elmID.split("_")[0];
                     query = elmID.split("_")[1];
-                    console.log( `${ $(".SectionQuery").length  }` );
-                    $(".SectionQuery").map(function() { console.log(this.id); });
                     
                     // Set postion in slide show
                     slides.goToPage(section, query);
