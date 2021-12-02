@@ -114,7 +114,20 @@ Each query and their results can then be sent to a "*TV*" like div broken into o
       - Current approach now allows for blocking navigation during queries + fixes speed issues.
     - I can now have the index.html read the example 3 queries for 3 sections, then also link out to the sectionYYZ page for all of its queries <= Core website done, and apply touch-ups.
       - Once done look at a loading icon for the resultsBlock, a big white space is not appealing.
+      
+        
     
+  - Added the section pages & restricted the Slide-Show.js to only load active section:
+  
+    - Navigation buttons now move between pages, and channel switches are locked with an alert message.
+    - All queries for all section pages are navigable by in the TV-Div.
+    - Adding the unknown amount of queries to the sidebar is fine.
+    - Managing the JSON object threw up some string errors, so hardcoded for now.
+    - New elements in the sidebar after the base 3 are not clickable, despite them being present:
+      - When I print the element IDs within the class for the base 3 I can see all elements listed as they should be.
+      - Indicating that everything should work normal.
+      - When I click the new elements, nothing happens & am not sure how to debug this.
+  
     
   
 - Tidy up:
