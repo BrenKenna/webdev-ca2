@@ -142,6 +142,14 @@ a[data-toggle="collapse"] {
     transform: translateY(-50%);
 }
 
+/* Make long queries scrollable 
+#sidebar {
+    overflow: hidden;
+    overflow-y: scroll;
+}
+*/
+
+/* Make buttons stand out */
 #runAllQueries, #toggleSidebar, #prevQ, #runQuery, #resetBtn, #nextQ{
     border: 1.5px solid black;
 }

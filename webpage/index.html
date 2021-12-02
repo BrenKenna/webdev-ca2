@@ -277,18 +277,7 @@
                     console.log("\nSetting up database");
                     empDB = new Uint8Array(db_xhttp.response);
                     db_xhttp = null;
-                    set_TV_PendingResults();
-
-                    // Iterate over the sections
-                    for(sectionID in slides.getDataset() ) {
-
-                        // Setting the query label
-                        for(queryID in slides.getDataset()[sectionID] ) {
-                          menuID=`${sectionID}_${queryID}`;
-                         $(`#${menuID}`).text( slides.getDataset()[sectionID][queryID]["Label"] )
-                        }
-                    }
-
+                    
                     // Update content from the TV-Div
                     let data = slides.getActiveElement();
                     $("#blockHeading").text( data["Label"] );
@@ -321,6 +310,16 @@
 
                         // Update the slides object
                         slides.setdataset( JSON.parse(xhttp.responseText) );
+
+                        // Iterate over the sections
+                        for(sectionID in slides.getDataset() ) {
+
+                            // Setting the query label
+                            for(queryID in slides.getDataset()[sectionID] ) {
+                            menuID=`${sectionID}_${queryID}`;
+                            $(`#${menuID}`).text( slides.getDataset()[sectionID][queryID]["Label"] )
+                            }
+                        }
                         xhttp = null;
                     }
                 };
