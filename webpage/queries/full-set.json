@@ -16,9 +16,14 @@
             "Query": "SELECT DISTINCT first_name AS 'First Name',  last_name AS 'Last Name' FROM employees ORDER BY first_name, last_name ASC LIMIT 15;"
         },
 
-        "Query5": {
+        "Query4": {
             "Label": "List Department Attributes",
             "Query": "DESCRIBE departments;"
+        },
+
+        "Query5": {
+            "Label": "List Employees Attributes",
+            "Query": "DESCRIBE employees;"
         }
     },
 
@@ -28,10 +33,12 @@
             "Label": "List Department Titles",
             "Query": "SELECT DISTINCT dept_name AS 'Department Title' FROM departments LIMIT 15;"
         },
+
         "Query2": {
             "Label": "List Total Number of Employees",
             "Query": "SELECT COUNT(DISTINCT emp_id) AS 'N Employees' FROM employees;"
         },
+        
         "Query3": {
             "Label": "List Female Employees",
             "Query": "SELECT * FROM employees WHERE gender = 'F' GROUP BY emp_ID ORDER BY RANDOM() LIMIT 15;"

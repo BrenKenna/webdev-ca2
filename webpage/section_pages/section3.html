@@ -5,29 +5,40 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Section 3</title>
+        <title>Database App</title>
 
         <!-- Custom page stlyings -->
         <link href="../stylings.css" rel="stylesheet">
 
         <!-- Javascript -->
-        <script src="sidebar.js"></script>
+        <!-- 
+            Consider wrapping some of the menu to make the index.html less busy
+            <script src="./menu.js" type="text/javascript"></script>
+        --> 
+        <script type="module" src="../supporting_modules/SlideShow.js"></script>
+        <script type="module" src="../supporting_modules/run_queries.js"></script>
+
+        <!-- SQL.js -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/0.2.4/js/sql.js"></script>
+
+        <!-- jQuery and jQuery-UI -->
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 
         <!-- Bootstrap CSS CDN -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
-        
 
         <!-- Font Awesome JS -->
         <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
         <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
 
         <!-- jQuery CDN - Slim version (=without AJAX) -->
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
         <!-- Popper.JS -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
         <!-- Bootstrap JS -->
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
-
     </head>
 
     <body>
@@ -46,53 +57,36 @@
                     -> Class for dropdown-toggle.
                     -> Items here have class "collapse type".
                     -> The nest can the content of a link.
-            
             -->
             <nav id="sidebar">
                 <div class="sidebar-header">
-                    <h3>Bootstrap Sidebar</h3>
+                    <h3>HR Database App</h3>
                 </div>
         
                 <ul class="list-unstyled components">
-                    <p>Dummy Heading</p>
+                    <p>Choose Query By Section</p>
                     <li class="active">
-                        <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>
-                        <ul class="collapse list-unstyled" id="homeSubmenu">
-                            <li>
-                                <a href="#">Home 1</a>
+                        <a href="#section3_menu" aria-expanded="false">Section 3 Queries</a>
+                        <ul class="list-unstyled" id="section_menu">
+                            <li id="Query1">
+                                <a class="SectionQuery" id="Section3_Query1" href="#">Query 1</a>
                             </li>
-                            <li>
-                                <a href="#">Home 2</a>
+                            <li id="Query2">
+                                <a class="SectionQuery" id="Section3_Query2" href="#">Query 2</a>
                             </li>
-                            <li>
-                                <a href="#">Home 3</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#">About</a>
-                    </li>
-                    <li>
-                        <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pages</a>
-                        <ul class="collapse list-unstyled" id="pageSubmenu">
-                            <li>
-                                <a href="#">Page 1</a>
-                            </li>
-                            <li>
-                                <a href="#">Page 2</a>
-                            </li>
-                            <li>
-                                <a href="#">Page 3</a>
+                            <li id="Query3">
+                                <a class="SectionQuery" id="Section3_Query3" href="#">Query 3</a>
                             </li>
                         </ul>
-                    </li>
-                    <li>
-                        <a href="#">Portfolio</a>
-                    </li>
-                    <li>
-                        <a href="#">Contact</a>
                     </li>
                 </ul>
+
+                <!-- Run 'em All Button-->
+                <div class="d-flex justify-content-center">
+                    <button type="button" id="runAllQueries" class="btn btn-success">
+                        <span>Run All Queries</span>
+                    </button>
+                </div>
             </nav>
 
             <!-- Navbar containing toggle button and page links -->
@@ -106,44 +100,355 @@
                             <span>Toggle Sidebar</span>
                         </button>
 
-
-                        <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <button id="toggleSidebar" class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                             <i class="fas fa-align-justify"></i>
                             <span>View Pages</span>
                         </button>
 
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="nav navbar-nav ml-auto">
+                                <li class="nav-item">
+                                    <a class="nav-link SectionID" href="./section1.html">Section 1</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link SectionID" href="./section2.html">Section 2</a>
+                                </li>
                                 <li class="nav-item active">
-                                    <a class="nav-link" href="#">Page</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Page</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Page</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Page</a>
+                                    <a class="nav-link SectionID" href="#">Section 3</a>
                                 </li>
                             </ul>
                         </div>
-            
                     </div>
                 </nav>
 
-                <p>Hello I am in the wrapper.content</p>
-            </div>
-        
+                <!-- Modal content if it was ignored -->
+                <!-- 
+                        <div id="helperDiv">
+                        <br><br>
+                        <h5 class="modal-title">Welcome to the online HR Database App</h5>
+                        <p>Use the sidebar on the left to navigate to a specific query, or the navigation buttons on the top right.
+                     <br>From there you can navigate the queries for that section using the sidebar, or move to another section using the navigation buttons.</p>
+                    </div>
+                 -->
+
+                <!--
+                    TV Div Template
+                        - Copy and paste the current CSS stylings
+                -->
+                <br>
+                <div class="tv container" id="tvDiv">
+
+                    <!-- Navigate channels -->
+                    <div class="tv-nav" id="tv-left"><span class="tv-chan" id="chanLeft">&#60;</span></div>
+                    <div class="tv-nav" id="tv-right"><span class="tv-chan" id="chanRight">&#62;</span></div>
+
+                    <!-- Screen -->
+                    <div class="tv-content">
+                        <div class="tv-screen container-fluid">
+
+                            <!-- Header / Query Label -->
+                            <div id="blockTitle" class="text-center tv-item">
+                                <h3 id="blockHeading" class="modal-title"></h3>
+                            </div>
+
+                            <!-- Query Code Block -->
+                            <div id="queryBlock" class="tv-item text-justify">
+                                <p id="queryText"></p>
+                            </div>
+
+                            <!-- Results -->
+                            <div id="resultsBlock" class="tv-item">
+
+                                <!-- Simple Table -->
+                                <table id="resultsTable" class="table">
+                                    <thead id="colHead"><br><br>Press the Run Query Button</thead>
+                                    <tbody id="resultsBody"><br>To view your results</tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- TV Buttons -->
+                    <div class="tv-btns">
+
+                        <!-- Go to first -->
+                        <button type="button" id="prevQ" class="btn btn-primary">
+                            <span>Previous</span>
+                        </button>
+
+                        <!--
+                            Run Query
+                                - Will get the content of the active queryBlock
+                        -->
+                        <button type="button" id="runQuery" class="btn btn-success">
+                            <span>Run Query</span>
+                        </button>
+
+                        <!--
+                            Reset
+                                - Will set the results block to Pending / Empty
+                        -->
+                        <button type="button" id="resetBtn" class="btn btn-danger">
+                            <span>Reset</span>
+                        </button>
+
+                        <!-- Go to last -->
+                        <button type="button" id="nextQ" class="btn btn-primary">
+                            <span>Next</span>
+                        </button>
+                    </div>
+                </div>
+            </div>        
         </div>
 
-        <!-- Script for sidebar -->
-        <script type="text/javascript">
+        <!-- Modal for how to navigate webpage -->
+        <div id="tutorialModal" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header text-center">
+                        <h5 class="modal-title">Welcome to the online HR Database App</h5>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <p>In addition to the central TV-Viewer, use the sidebar on the left to navigate to a specific query, or the navigation buttons on the top right for a specific collection of queries.</p>
+                        <p>Using these tools you can navigate the entire content, and execute the desired query at leisure.</p>
+                        <p>Or, sit back, relax and enjoy an automated view of the data using the "<span style="font-weight: bold; font-style: italic;">Run All Queries</span>" button... With some time to scroll through the results of course ;).</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--
+            Does not work unless unless specified here FFS = Bootstrap
+            Script for sidebar
+        -->
+        <script type="module">
+
+            // Import modules
+            import SlideShow from '../supporting_modules/SlideShow.js';
+            import {manageQueries} from '../supporting_modules/run_queries.js';
+
+            // Initalize required variables
+            let xhttp, updated;
+            let slides, empDB;
+            let activeQuery = false;
+            slides = new SlideShow();
+
+            // Request database
+            let db_xhttp = new XMLHttpRequest();
+            db_xhttp.open("GET", "../database/employees.db", true);
+            db_xhttp.responseType = 'arraybuffer';
+            db_xhttp.send();
+            db_xhttp.onreadystatechange = function() {
+                if (db_xhttp.readyState == 4 && db_xhttp.status == 200) {
+
+                    // Instantiate db object from response
+                    console.log("\nSetting up database");
+                    empDB = new Uint8Array(db_xhttp.response);
+                    db_xhttp = null;
+                }
+            };
+
+            // Make page interactive once loaded
             $(document).ready(function () {
+
+                // Display helper modal on page load (index.html only)
+                $("#tutorialModal").modal('show');
 
                 // Toggle the sidebar
                 $('#sidebarCollapse').on('click', function () {
                     $('#sidebar').toggleClass('active');
+                });
+
+                // Populate the Slide-Show.js with CMS data
+                // & and serve this content to the webapp
+                xhttp = new XMLHttpRequest();
+                xhttp.open("GET", "../queries/full-set.json", true);
+                xhttp.send();
+
+                xhttp.onreadystatechange = function() {
+
+                    // Update when ready
+                    // Encountered issues when encapsulated within CMS.js
+                    if (xhttp.readyState == 4 && xhttp.status == 200) {
+
+                        // Initalize variables
+                        let sectionID = "Section3";
+                        let listElm, queryID, queryLabel, query, menuID;
+
+                        // Update the slides
+                        let dataset = JSON.parse(xhttp.responseText);
+                        dataset = { "Section3": dataset[sectionID] };
+                        slides.setdataset(dataset);
+
+                        // Setting the query label
+                        for(queryID in slides.getDataset()[sectionID] ) {
+
+                            // Set menu id
+                            menuID=`${sectionID}_${queryID}`;
+                            queryLabel = slides.getDataset()[sectionID][queryID]["Label"];
+
+                            // Add to list if not already there
+                            if($(`#${queryID}`).length < 1 ) {
+                                listElm = `
+                                    <li id="${queryID}">
+                                        <a class="SectionQuery" id="${menuID}" href="#">${queryLabel}</a>
+                                    </li>
+                                `;
+                                $("#section_menu").append(listElm);
+                            }
+
+                            // Otherwise add element
+                            else {
+                                $(`#${menuID}`).text( queryLabel );
+                            }
+                        }
+
+                        // Update content from the TV-Div
+                        let data = slides.getActiveElement();
+                        $("#blockHeading").text( data["Label"] );
+                        $("#queryBlock").text( data["Query"] );
+                        xhttp = null;
+                    }
+                };
+
+                // Display content of previous page
+                $("#prevQ").click( function () {
+
+                    // Move in the slides
+                    slides.goToPreviousPage();
+
+                    // Update content
+                    let data = slides.getActiveElement();
+                    $("#blockHeading").text( data["Label"] );
+                    $("#queryBlock").text( data["Query"] );
+
+                    // Update the results table
+                    $("#resultsBlock").html(`
+                        <table id="resultsTable" class="table">
+                            <thead id="colHead"><br><br>Press the Run Query Button</thead>
+                            <tbody id="resultsBody"><br>To view your results</tbody>
+                        </table>
+                    `);
+                });
+
+                // Display content of next page
+                $("#nextQ").click( function () {
+
+                    // Move in the slides
+                    slides.goToNextPage();
+
+                    // Update content
+                    let data = slides.getActiveElement();
+                    $("#blockHeading").text( data["Label"] );
+                    $("#queryBlock").text( data["Query"] );
+
+                    // Update the results table
+                    $("#resultsBlock").html(`
+                        <table id="resultsTable" class="table">
+                            <thead id="colHead"><br><br>Press the Run Query Button</thead>
+                            <tbody id="resultsBody"><br>To view your results</tbody>
+                        </table>
+                    `);
+                });
+
+
+                // Display first page of next section
+                $("#chanRight").click( function () {
+
+                    // Block section changes
+                    window.alert("Please Use the Navigation bar to move between section in this view. This is to prevent accidental moves");
+                });
+
+
+                // Display first page of previous section
+                $("#chanLeft").click( function () {
+
+                    // Block section changes
+                    window.alert("Please Use the Navigation bar to move between section in this view. This is to prevent accidental moves");
+                });
+
+                // Handle selecting list class items
+                $(".SectionQuery").click(function () {
+
+                    // Initalize variables
+                    let elmID, section, query, data;
+
+                    // Get elementID to set position
+                    elmID = this.id;
+                    section = elmID.split("_")[0];
+                    query = elmID.split("_")[1];
+                    
+                    // Set postion in slide show
+                    slides.goToPage(section, query);
+
+                    // Set page content
+                    data = slides.getActiveElement();
+                    $("#blockHeading").text( data["Label"] );
+                    $("#queryBlock").text( data["Query"] );
+
+                    // Update the results table
+                    $("#resultsBlock").html(`
+                        <table id="resultsTable" class="table">
+                            <thead id="colHead"><br><br>Press the Run Query Button</thead>
+                            <tbody id="resultsBody"><br>To view your results</tbody>
+                        </table>
+                    `);
+                });
+
+
+                // Handle setting section from nav buttons
+                $(".SectionID").click( function() {
+
+                    // Initalize variables
+                    let data, sectionID;
+                    sectionID = this.text.replace(" ", "");
+                    slides.goToSection(sectionID);
+
+                    // Set the page content
+                    data = slides.getActiveElement();
+                    $("#blockHeading").text( data["Label"] );
+                    $("#queryBlock").text( data["Query"] );
+
+                    // Update the results table
+                    $("#resultsBlock").html(`
+                        <table id="resultsTable" class="table">
+                            <thead id="colHead"><br><br>Press the Run Query Button</thead>
+                            <tbody id="resultsBody"><br>To view your results</tbody>
+                        </table>
+                    `);
+                });
+
+
+                // Handle executing queries
+                $("#runQuery").click(function() {
+
+                    // Get the active section
+                    let data, results;
+                    activeQuery = true;
+                    data = slides.getActiveElement();
+
+                    /**
+                     * Delegate handling the query + table div to run_queries.
+                     * 
+                     *  import manageQueries from './supporting_modules/run_queries.js';
+                     * 
+                     */
+                    console.log("Query active = " + activeQuery);
+                    manageQueries(empDB, data['Query']);
+                    activeQuery = false;
+                    console.log("Query active = " + activeQuery);
+                });
+
+
+                // Reset table
+                $("#resetBtn").click( function() {
+                    $("#resultsBlock").html(`
+                        <table id="resultsTable" class="table">
+                            <thead id="colHead"><br><br>Press the Run Query Button</thead>
+                            <tbody id="resultsBody"><br>To view your results</tbody>
+                        </table>
+                    `);
                 });
             });
 
