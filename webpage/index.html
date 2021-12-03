@@ -295,6 +295,7 @@
                 }
             };
 
+
             // Make page interactive once loaded
             $(document).ready(function () {
 
@@ -326,8 +327,8 @@
 
                             // Setting the query label
                             for(queryID in slides.getDataset()[sectionID] ) {
-                            menuID=`${sectionID}_${queryID}`;
-                            $(`#${menuID}`).text( slides.getDataset()[sectionID][queryID]["Label"] )
+                                menuID=`${sectionID}_${queryID}`;
+                                $(`#${menuID}`).text( slides.getDataset()[sectionID][queryID]["Label"] )
                             }
                         }
                         xhttp = null;
@@ -388,7 +389,6 @@
                                 <tbody id="resultsBody"><br>To view your results</tbody>
                             </table>
                         `);
-
                     }
                 });
 
