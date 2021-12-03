@@ -13,7 +13,15 @@
 
 /**
  *
- * Slide show class to better represent the slide object
+ * Slide show class to synchronize with the TV-Div and automatically
+ * walk along the keys of retrived JSON store. Setions are akin to 
+ * movie genres, and pages are akin to movies of a genre. All sectionIDs
+ *  are stored in an array, and the pages array is updated depending 
+ * on the acive section.
+ * 
+ * All movements around the section & page arrays are circular. Meaning,
+ * first backwards moves to the last, and move forwards from the last,
+ * navigates to the first.
  *
  */
 class SlideShow {
@@ -29,7 +37,10 @@ class SlideShow {
 
 
     /**
-     * Constructor
+     * 
+     * Default constructor does not need a dataset. More for debugging
+     *  purposes to see how things work different structures etc.
+     * 
      */
     constructor() {
         this.#dataset = {};
@@ -40,7 +51,9 @@ class SlideShow {
     }
 
     /**
-     * Set #dataset attributes
+     * Set the dataset attribute, and set the active position 
+     * to be the first page of the first section.
+     * 
      */
     setdataset(data) {
         this.#dataset = data;
@@ -58,7 +71,8 @@ class SlideShow {
     }
 
     /**
-     * Set page count for active section
+     * Set page data for the required section
+     * 
      */
     setPages(section){
         let sectionID = Object.keys(this.#dataset)[section];
@@ -67,7 +81,8 @@ class SlideShow {
     }
 
     /**
-     * Go to page
+     * Go to a specific page in a specific section
+     * 
      */
     goToPage(section, page) {
 
@@ -81,7 +96,7 @@ class SlideShow {
     }
 
     /**
-     * Go to section
+     * Go to the first page of a specific section
      */
     goToSection(section) {
 
@@ -91,12 +106,10 @@ class SlideShow {
         this.#currentPage = 0;
     }
 
-    // 
-    // Set positions
-    // 
+
     /**
      * Method to set the current position to the
-     * first element of the slide
+     * first section of the slide
      */
     goToFirstSection() {
         this.#currentSection = 0;
@@ -106,7 +119,7 @@ class SlideShow {
 
     /**
      * Method to set the current position to the
-     * first element of the slide
+     * first page of the slide
      */
      goToFirstPage() {
         this.#currentPage = 0;
@@ -127,9 +140,9 @@ class SlideShow {
 
 
     /**
-     * Method to set the current position to the
-     * index of next element, or the first element
-     * of #dataset if on the last position
+     * Method to set the current page to be the
+     * index of next element in the page array, 
+     * or the first page is moving from the last one
      */
     goToNextPage() {
 
@@ -146,7 +159,7 @@ class SlideShow {
 
     /**
      * 
-     * Method to go to next section and update the page count
+     * Method to go to next section and update the page position
      * 
      */
     goToNextSection() {
@@ -182,7 +195,7 @@ class SlideShow {
 
     /**
      * 
-     * Go to previous section and set the page count
+     * Go to previous section and set the page position
      * 
      */
      goToPreviousSection() {
@@ -200,9 +213,7 @@ class SlideShow {
         }
     }
 
-    // 
-    // Get attributes
-    //
+
     /**
      * Method to return the current position in #dataset
      *
@@ -215,7 +226,8 @@ class SlideShow {
     /**
      * Returns the element in list corresponding to the
      * current position
-     * @returns dataType
+     * 
+     * @returns Key-Value pair of current page
      */
     getActiveElement() {
         let position, data, sectionID, pageID;
@@ -228,15 +240,18 @@ class SlideShow {
 
     /**
      * 
-     * Get the data for required section, page
-     * 
+     * Get the key-value pair of the page within 
+     * a section.
+     * @returns Key-Value pair
      */
     getElementByKeys(section, page) {
         return this.#dataset[section][page];
     }
 
     /**
-     * Get dataset
+     * Get the SlideShow dataset
+     * 
+     * @returns JSON object
      */
     getDataset(){
         return this.#dataset;
