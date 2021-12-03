@@ -10,17 +10,6 @@
 */
 
 /**
- * Read database from local storage path.
- *  Not exported because copy & paste is buggey
- */
- function readDatabase (dbPath) {
-	var l = dbPath.length,
-	arr = new Uint8Array(l);
-	for (var i=0; i<l; i++) arr[i] = dbPath.charCodeAt(i);
-	return arr;
-}
-
-/**
  * Function to manage running queries to the connected database
  * & and delivery the results as content to the TV-Div
  */
@@ -123,8 +112,6 @@
     results = null;
     console.log(`Query complete with N rows = ${counter-1}`);
 }
-
-
 
 
 /**
@@ -230,6 +217,20 @@ function manageQueries_old(query) {
         }
     };
 }
+
+
+/**
+ * Read database from local storage path.
+ *  Not exported because copy & paste is buggey
+ *   and too hard to read for now... Must not want folks doing it :(
+ */
+ function readDatabase (dbPath) {
+	var l = dbPath.length,
+	arr = new Uint8Array(l);
+	for (var i=0; i<l; i++) arr[i] = dbPath.charCodeAt(i);
+	return arr;
+}
+
 
 // Export the manage queries function
 export {manageQueries, manageQueries_old};

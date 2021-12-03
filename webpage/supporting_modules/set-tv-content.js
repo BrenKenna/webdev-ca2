@@ -52,5 +52,14 @@ function set_TV_PendingResults() {
 }
 
 
+/**
+ * Function to handle displaying alerts
+ *  if database is not loaded
+ * 
+ * function manageNav(dbLoaded) {}
+ * 
+ */
+
+
 // Export functions
 export {set_TV_Loader, set_TV_PendingResults};
