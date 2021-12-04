@@ -3,7 +3,7 @@
 
         "Query1": {
             "Label": "List Employees",
-            "Query": "SELECT DISTINCT emp_id AS 'EmployeeID', first_name AS 'First Name', last_name AS 'Last Name' FROM employees ORDER BY RANDOM() LIMIT 15;"
+            "Query": "SELECT DISTINCT emp_id AS 'EmployeeID', first_name AS 'First Name', last_name AS 'Last Name' FROM employees LIMIT 100;"
         },
 
         "Query2": {
@@ -13,17 +13,17 @@
 
         "Query3": {
             "Label": "List Employees Ordered By Name",
-            "Query": "SELECT DISTINCT first_name AS 'First Name',  last_name AS 'Last Name' FROM employees ORDER BY first_name, last_name ASC LIMIT 15;"
+            "Query": "SELECT DISTINCT first_name AS 'First Name',  last_name AS 'Last Name' FROM employees ORDER BY first_name, last_name ASC LIMIT 100;"
         },
 
         "Query4": {
-            "Label": "List Department Attributes",
-            "Query": "DESCRIBE departments"
+            "Label": "Count employees whose last name starts with a 'B'", 
+            "Query": "SELECT COUNT(DISTINCT first_name) AS 'Total with B' FROM employees WHERE first_name LIKE 'B%' LIMIT 100;"
         },
 
         "Query5": {
-            "Label": "List Employees Attributes",
-            "Query": "DESCRIBE employees;"
+            "Label": "View the employees training table",
+            "Query": "SELECT * FROM emp_training LIMIT 100;"
         }
     },
 
@@ -31,66 +31,22 @@
 
         "Query1": {
             "Label": "List Department Titles",
-            "Query": "SELECT DISTINCT dept_name AS 'Department Title' FROM departments LIMIT 15;"
+            "Query": "SELECT DISTINCT dept_name AS 'Department Title' FROM departments LIMIT 100;"
         },
 
         "Query2": {
             "Label": "List Total Number of Employees",
-            "Query": "SELECT COUNT(DISTINCT emp_id) AS 'N Employees' FROM employees;"
+            "Query": "SELECT COUNT(DISTINCT emp_id) AS 'N Employees' FROM employees LIMIT 100;"
         },
         
         "Query3": {
             "Label": "List Female Employees",
-            "Query": "SELECT * FROM employees WHERE gender = 'F' GROUP BY emp_ID ORDER BY RANDOM() LIMIT 15;"
+            "Query": "SELECT * FROM employees WHERE gender = 'F' GROUP BY emp_ID LIMIT 100;"
         },
 
         "Query4": {
             "Label": "List employees hired before 01/01/1986 with Simmel as their last name",
-            "Query": "SELECT * FROM employees WHERE hire_date < '1986-01-01' AND last_name = 'Simmel' GROUP BY emp_ID ORDER BY RANDOM() LIMIT 15;"
-        },
-
-        "Query5": {
-            "Label": "Count employees whose last name starts with a 'B'", 
-            "Query": "SELECT COUNT(DISTINCT first_name) AS 'Total with B' FROM employees WHERE first_name LIKE 'B%';"},
-
-        "Query6": {
-            "Label": "Create an employees training table",
-            "Query": "CREATE TABLE IF NOT EXISTS emp_training(trainer_no INTEGER PRIMARY KEY AUTOINCREMENT, first_name VARCHAR(30) NOT NULL, last_name VARCHAR(30) NOT NULL, t_module VARCHAR(20));" 
-        },
-        
-        "Query7": {
-            "Label": "Insert 'Joe Bloggs' record the employees training table",
-            "Query": "INSERT INTO emp_training (first_name, last_name, t_module) VALUES ('Joe', 'Bloggs', 'Google Docs');"
-        },
-
-        "Query8": {
-            "Label": "Insert 'Fred Blogss' record into the employees training table",
-            "Query": "INSERT INTO emp_training (first_name, last_name, t_module) VALUES ('Fred', 'Bloggs', 'Google Sheets');"
-        },
-
-        "Query9": {
-            "Label": "View the employees training table",
-            "Query": "SELECT * FROM emp_training;"
-        },
-
-        "Query10": {
-            "Label": "Drop the employees training table",
-            "Query": "DROP TABLE IF EXISTS  emp_training;"
-        },
-
-        "Query11": {
-            "Label": "Add an email address column to the employees table",
-            "Query": "ALTER TABLE employees ADD COLUMN email_address VARCHAR(20);"
-        }, 
-
-        "Query12": {
-            "Label": "Add an email address to the newly created email column",
-            "Query": "UPDATE employees SET email_address = 'gfacello@gmail.com' WHERE emp_id = 10001;"
-        },
-
-        "Query13": {
-            "Label": "List employees with an email address",
-            "Query": "SELECT * FROM employees WHERE email_address IS NOT NULL;"
+            "Query": "SELECT * FROM employees WHERE hire_date < '1986-01-01' AND last_name = 'Simmel' GROUP BY emp_ID LIMIT 100;"
         }
     },
 
@@ -103,7 +59,7 @@
 
         "Query2": {
             "Label": "List Count of Postitions Held Per Employees",
-            "Query": "SELECT emp_id, COUNT(DISTINCT title) AS 'N_Titles' FROM titles GROUP BY emp_id HAVING N_Titles >= 2 ORDER BY N_Titles DESC LIMIT 15;"
+            "Query": "SELECT emp_id, COUNT(DISTINCT title) AS 'N_Titles' FROM titles GROUP BY emp_id HAVING N_Titles >= 2 ORDER BY N_Titles DESC LIMIT 100;"
         },
 
         "Query3": {
