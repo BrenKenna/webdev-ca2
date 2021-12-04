@@ -164,7 +164,7 @@ a[data-toggle="collapse"] {
 /* TV Class Styling */
 .tv{
     position: relative;
-    /* border: 3px solid black; */ 
+    border: 3px solid black;
     margin: auto;
 
     /*
@@ -179,20 +179,18 @@ a[data-toggle="collapse"] {
 }
 
 
-
 /* Left & Right Channels to swap between sections */
 .tv-nav {
     position: absolute;
     width: 70px; /* Can use X% of active width */
     height: 570px; /* Should really be calculated */
-    /* border: 2px solid rgb(194, 81, 96); */
+    border: 2px solid rgb(194, 81, 96);
     top: 15px;
     bottom: 15px;
-    border-radius: 16px;
 }
 
 .tv-nav:hover {
-    background-color: rgb(115,134,213);
+    background-color: rgb(172, 155, 155);
 }
 
 .tv-chan {
@@ -203,7 +201,6 @@ a[data-toggle="collapse"] {
     width: 100%;
     cursor: pointer;
     left: 9%;
-    color: rgb(117, 114, 117);
 }
 
 /* Place channels left or right */
@@ -232,7 +229,7 @@ a[data-toggle="collapse"] {
     position: absolute;
     width: auto;
     height: auto;
-    /* border: 2px solid blue; */
+    border: 2px solid blue;
     top: 5px;
     bottom: 0;
 }
@@ -247,8 +244,6 @@ a[data-toggle="collapse"] {
 #blockTitle{
     height: 8%;
     font-size: 1.2em;
-    border-radius: 16px;
-    /* background-color: rgb(115,134,213); */
 }
 
 /* Query block and the text */
@@ -257,7 +252,7 @@ a[data-toggle="collapse"] {
     border-radius: 16px;
     display: flex;
     align-items: center;
-    background-color: rgb(117, 114, 117);
+    background-color: rgb(189, 182, 182);
     padding-left: 1.5%;
     padding-right: 1.5%;
 }
@@ -282,7 +277,7 @@ a[data-toggle="collapse"] {
     padding-top: 10px;
     position: absolute;
     bottom: 10px;
-    /* border: 2px solid purple; */
+    border: 2px solid purple;
     left: 90px;
     right: 90px;
     width: auto;
@@ -329,7 +324,7 @@ a[data-toggle="collapse"] {
 */
 #resultsTable {
     margin-bottom: 0px;
-    background-color: white;
+    background-color: rgb(115,134,213);
 }
 
 
@@ -340,7 +335,7 @@ a[data-toggle="collapse"] {
 }
 
 .table {
-    color: black;
+    color: rgb(255,255,255);
 }
 
 /*
