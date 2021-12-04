@@ -267,16 +267,15 @@ a[data-toggle="collapse"] {
     width: auto;
     height: 65px;
 }
-
 #prevQ {
     position: absolute;
     left: 2%;
 }
-#runQuery {
+#resetBtn {
     position: absolute;
     left: 30%;
 }
-#resetBtn {
+#runQuery {
     position: absolute;
     right: 30%;
 }
