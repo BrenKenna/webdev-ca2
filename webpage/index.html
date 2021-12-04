@@ -288,7 +288,7 @@
             let db_xhttp = new XMLHttpRequest();
             db_xhttp.open("GET", "./database/employees.db", true);
             db_xhttp.responseType = 'arraybuffer';
-            db_xhttp.send();
+            // db_xhttp.send();
             db_xhttp.onreadystatechange = function() {
                 if (db_xhttp.readyState == 4 && db_xhttp.status == 200) {
 
@@ -299,7 +299,7 @@
                     
                     // Update content from the TV-Div
                     setTargetContent(slides, "#blockHeading", "Label");
-                    setTargetContent(slides, "#queryBlock", "Query");
+                    setTargetContent(slides, "#queryText", "Query");
                     databaseLoaded = true;
                     db_xhttp = null;
                 }
@@ -359,7 +359,7 @@
 
                         // Update content
                         setTargetContent(slides, "#blockHeading", "Label");
-                        setTargetContent(slides, "#queryBlock", "Query");
+                        setTargetContent(slides, "#queryText", "Query");
 
                         // Update the results table
                         default_ResultsBlock();
@@ -382,7 +382,7 @@
 
                         // Update content
                         setTargetContent(slides, "#blockHeading", "Label");
-                        setTargetContent(slides, "#queryBlock", "Query");
+                        setTargetContent(slides, "#queryText", "Query");
 
                         // Update the results table
                         default_ResultsBlock();
@@ -405,7 +405,7 @@
 
                         // Update content
                         setTargetContent(slides, "#blockHeading", "Label");
-                        setTargetContent(slides, "#queryBlock", "Query");
+                        setTargetContent(slides, "#queryText", "Query");
 
                         // Update the results table
                         default_ResultsBlock();
@@ -428,7 +428,7 @@
 
                         // Update content
                         setTargetContent(slides, "#blockHeading", "Label");
-                        setTargetContent(slides, "#queryBlock", "Query");
+                        setTargetContent(slides, "#queryText", "Query");
 
                         // Update the results table
                         default_ResultsBlock();
@@ -458,7 +458,7 @@
 
                         // Update content
                         setTargetContent(slides, "#blockHeading", "Label");
-                        setTargetContent(slides, "#queryBlock", "Query");
+                        setTargetContent(slides, "#queryText", "Query");
 
                         // Update the results table
                         default_ResultsBlock();

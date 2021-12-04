@@ -245,18 +245,24 @@ a[data-toggle="collapse"] {
     height: 8%;
     font-size: 1.2em;
 }
+
+/* Query block and the text */
 #queryBlock{
     height: 23%;
     border-radius: 16px;
     display: flex;
     align-items: center;
     background-color: rgb(189, 182, 182);
-    font-weight: bold;
-    font-style: italic;
     padding-left: 1.5%;
     padding-right: 1.5%;
-    font-size: 1em;
 }
+#queryText {
+    font-size: 1em;
+    font-weight: bold;
+    font-style: italic;
+    color: black;
+}
+
 
 #tempTab{
     font-weight: bold;
@@ -356,7 +362,7 @@ a[data-toggle="collapse"] {
     position: absolute;
     top: 30%;
     left: 40%;
-    width: 190px;
+    width: 330px;
     height: 180px;
 }
 #loaderText{
@@ -396,14 +402,74 @@ a[data-toggle="collapse"] {
 * 
 * 6. Media Queries
 * 
+* Biggest thing is the position of the loader animation
+* 
+* Second is the clunky sidebar:
+*   - A lower z-index for TV-DV, and higher for sidear when active.
+*   - Means that this will be set by the toggle class (index.html-JS).
+*   - Is it an inherited property though? TV will cause headaches
+*
+* Third is text:
+*   - However em values were used for text and it's based off the body.
+*   - Meaning, I can only guess what it will look like based on resizing my page...
+*   - A lot of effort to learn about checking, or doing own hosting.
+* 
 */
 
 /* Stylings for small devices */
 @media (max-width: 768px) {
+
+    /* Sider bar from bootstrap */
     #sidebar {
         margin-left: -250px;
     }
     #sidebar.active {
         margin-left: 0;
+    }
+
+    /* Reposition the loaderHolder */
+    .loaderHolder {
+        position: absolute;
+        left: 25%;
+    }
+
+    /* Text on tv-screen: block, query and results divs */
+    #blockTitle h3 {
+        font-size: 1.0em;
+    }
+    #queryText, #colHead, #resultsBody td, #tempTab {
+        font-size: 0.6em;
+    }
+
+    /* Lower spacing between buttons */
+    #runQuery {
+        right: 21.4%;
+    }
+    #resetBtn {
+        left: 29%;
+    }
+}
+
+/* Style for medium devices */
+@media (min-width: 769px) and (max-width: 1000px) {
+
+    /* Loader position */
+    .loaderHolder{
+        left: 33%;
+    }
+
+    #sidebar {
+        margin-left: -250px;
+    }
+    #sidebar.active {
+        margin-left: 0;
+    }
+
+    /* Lower spacing between buttons */
+    #runQuery {
+        right: 26%;
+    }
+    #resetBtn {
+        left: 30%;
     }
 }

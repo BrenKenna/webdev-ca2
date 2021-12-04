@@ -34,8 +34,8 @@ function set_TV_PendingResults() {
         </div>
 
         <!-- Query Code Block -->
-        <div id="queryBlock" class="tv-item text-justify">
-            <p id="queryText"></p>
+        <div id="queryBlock" class="tv-item">
+            <p class="text-justify" id="queryText"></p>
         </div>
 
         <!-- Results -->
@@ -81,9 +81,10 @@ function setTargetContent(slides, target, key) {
  */
 function default_ResultsBlock(){
     $("#resultsBlock").html(`
+        <!-- Simple Table -->
         <table id="resultsTable" class="table">
-            <thead id="colHead"><br><br>Press the Run Query Button</thead>
-            <tbody id="resultsBody"><br>To view your results</tbody>
+            <thead id="colHead"><br><br><span id="tempTab">Press the Run Query Button</span></thead>
+            <tbody id="resultsBody"><br><span id="tempTab">To view your results</span></tbody>
         </table>
     `);
 }
