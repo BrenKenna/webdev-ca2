@@ -442,8 +442,11 @@ a[data-toggle="collapse"] {
     #blockTitle h3 {
         font-size: 1.0em;
     }
-    #queryText, #colHead, #resultsBody td, #tempTab {
-        font-size: 0.6em;
+    #colHead{
+        font-size: 0.75em;
+    }
+    #queryText, #resultsBody th, #resultsBody td, #tempTab {
+        font-size: 0.65em;
     }
 
     /* Lower spacing between buttons */
