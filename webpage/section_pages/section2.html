@@ -5,16 +5,12 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Database App</title>
+        <title>Section 2 Queries</title>
 
         <!-- Custom page stlyings -->
         <link href="../stylings.css" rel="stylesheet">
 
-        <!-- Javascript -->
-        <!-- 
-            Consider wrapping some of the menu to make the index.html less busy
-            <script src="./menu.js" type="text/javascript"></script>
-        --> 
+        <!-- Custom Javascript -->
         <script type="module" src="../supporting_modules/SlideShow.js"></script>
         <script type="module" src="../supporting_modules/run_queries.js"></script>
         <script type="module" src="../supporting_modules/set-tv-content.js"></script>
@@ -45,21 +41,10 @@
 
     <body>
 
-        <!-- <h1>Lets make some sidebarsssss</h1> -->
-
         <!-- Div that contains the web page -->
         <div class="wrapper">
 
-            <!--
-                Sidebar is a nav element
-                The sidebar can contain a header div called sidebar-header
-                The sidebar must contain an unordered that can be nested.
-                When nesting this list, specific items can have the below:
-                    -> Collapsable via the data-toggle attribute.
-                    -> Class for dropdown-toggle.
-                    -> Items here have class "collapse type".
-                    -> The nest can the content of a link.
-            -->
+            <!-- Sidebar nav linked to TV-Div -->
             <nav id="sidebar">
                 <div class="sidebar-header">
                     <h3>HR Database App</h3>
@@ -68,6 +53,8 @@
                 <ul class="list-unstyled components">
                     <p>Choose Query By Section</p>
                     <li class="active">
+                        
+                        <!-- Drop down menu for section2 -->
                         <a href="#section2_menu" data-toggle="collapse" class="dropdown-toggle" aria-expanded="false">Section 2 Queries</a>
                         <ul class="collapse list-unstyled" id="section2_menu">
                             <li id="Query1">
@@ -82,16 +69,6 @@
                         </ul>
                     </li>
                 </ul>
-
-                <!--
-                    Run 'em All Button
-
-                    <div class="d-flex justify-content-center">
-                        <button type="button" id="runAllQueries" class="btn btn-success">
-                            <span>Run All Queries</span>
-                        </button>
-                    </div>
-                -->
             </nav>
 
             <!-- Navbar containing toggle button and page links -->
@@ -110,6 +87,7 @@
                             <span>View Pages</span>
                         </button>
 
+                        <!-- Content to navigate -->
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="nav navbar-nav ml-auto">
                                 <li class="nav-item">
@@ -149,19 +127,19 @@
                         </button>
 
                         <!--
-                            Run Query
-                                - Will get the content of the active queryBlock
-                        -->
-                        <button type="button" id="runQuery" class="btn btn-success">
-                            <span>Run Query</span>
-                        </button>
-
-                        <!--
                             Reset
                                 - Will set the results block to Pending / Empty
                         -->
                         <button type="button" id="resetBtn" class="btn btn-danger">
                             <span>Reset</span>
+                        </button>
+                        
+                        <!--
+                            Run Query
+                                - Will get the content of the active queryBlock
+                        -->
+                        <button type="button" id="runQuery" class="btn btn-success">
+                            <span>Run Query</span>
                         </button>
 
                         <!-- Go to last -->

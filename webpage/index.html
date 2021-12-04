@@ -11,12 +11,11 @@
         <link href="./stylings.css" rel="stylesheet">
 
         <!--
-
-            Custom Javascript Code:
-                - SlideShow needs documentation.
-                - Consider a SlideShow-Utils.js for run_queries & set-tv-content
-                - Read & experiment later with XHTTP functions module.
-
+            Custom Javascript:
+                - SlideShow to hold possible navigations.
+                - Set-tv-content.js essentially utilities for SlideShow.js
+                - Run_queris.js needs some more work, a lot functions doing a lot of things.
+                - Need to experiment more about organizing the XHTTP functions
         -->
         <script type="module" src="./supporting_modules/SlideShow.js"></script>
         <script type="module" src="./supporting_modules/run_queries.js"></script>
@@ -56,7 +55,7 @@
         <div class="wrapper">
 
             <!--
-                Sidebar is a nav element
+                Sidebar navigation linked to TV-Div
                 The sidebar can contain a header div called sidebar-header
                 The sidebar contain an list that can be nested.
                 When nesting this list, specific items can have the below:
@@ -73,6 +72,8 @@
                 <ul class="list-unstyled components">
                     <p>Choose Query By Section</p>
                     <li class="active">
+
+                        <!-- Drop down menu for section1 -->
                         <a href="#section1_menu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Section 1 Queries</a>
                         <ul class="collapse list-unstyled" id="section1_menu">
                             <li>
@@ -87,6 +88,8 @@
                         </ul>
                     </li>
                     <li>
+                        
+                        <!-- Drop down menu for section2 -->
                         <a href="#section2_menu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Section 2 Queries</a>
                         <ul class="collapse list-unstyled" id="section2_menu">
                             <li>
@@ -101,6 +104,8 @@
                         </ul>
                     </li>
                     <li>
+                        
+                        <!-- Drop down menu for section3 -->
                         <a href="#section3_menu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Section 3 Queries</a>
                         <ul class="collapse list-unstyled" id="section3_menu">
                             <li>
@@ -145,6 +150,7 @@
                             <span>View Pages</span>
                         </button>
 
+                        <!-- Content to navigate -->
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="nav navbar-nav ml-auto">
                                 <li class="nav-item active">
@@ -218,19 +224,19 @@
                         </button>
 
                         <!--
-                            Run Query
-                                - Will get the content of the active queryBlock
-                        -->
-                        <button type="button" id="runQuery" class="btn btn-success">
-                            <span>Run Query</span>
-                        </button>
-
-                        <!--
                             Reset
                                 - Will set the results block to Pending / Empty
                         -->
                         <button type="button" id="resetBtn" class="btn btn-danger">
                             <span>Reset</span>
+                        </button>
+                        
+                        <!--
+                            Run Query
+                                - Will get the content of the active queryBlock
+                        -->
+                        <button type="button" id="runQuery" class="btn btn-success">
+                            <span>Run Query</span>
                         </button>
 
                         <!-- Go to last -->
