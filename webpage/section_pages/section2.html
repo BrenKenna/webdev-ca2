@@ -184,13 +184,14 @@
             // Import modules
             import SlideShow from '../supporting_modules/SlideShow.js';
             import {manageQueries} from '../supporting_modules/run_queries.js';
-            import {set_TV_Loader, set_TV_PendingResults} from '../supporting_modules/set-tv-content.js';
+            import {set_TV_Loader, set_TV_PendingResults, setTargetContent, default_ResultsBlock, navAlert} from '../supporting_modules/set-tv-content.js';
 
             // Initalize required variables
             let xhttp, updated;
             let slides, empDB;
             set_TV_Loader();
             let activeQuery = false;
+            let databaseLoaded = false;
             slides = new SlideShow();
 
             // Request database
@@ -207,17 +208,14 @@
                     set_TV_PendingResults();
 
                     // Update content from the TV-Div
-                    let data = slides.getActiveElement();
-                    $("#blockHeading").text( data["Label"] );
-                    $("#queryBlock").text( data["Query"] );
+                    setTargetContent(slides, "#blockHeading", "Label");
+                    setTargetContent(slides, "#queryBlock", "Query");
+                    databaseLoaded = true;
                 }
             };
 
             // Make page interactive once loaded
             $(document).ready(function () {
-
-                // Display helper modal on page load (index.html only)
-                $("#tutorialModal").modal('show');
 
                 // Toggle the sidebar
                 $('#sidebarCollapse').on('click', function () {
@@ -229,7 +227,6 @@
                 xhttp = new XMLHttpRequest();
                 xhttp.open("GET", "../queries/full-set.json", true);
                 xhttp.send();
-
                 xhttp.onreadystatechange = function() {
 
                     // Update when ready
@@ -274,41 +271,46 @@
                 // Display content of previous page
                 $("#prevQ").click( function () {
 
-                    // Move in the slides
-                    slides.goToPreviousPage();
+                    // Print alert or migrate
+                    if( !databaseLoaded || activeQuery ) {
+                        navAlert();
+                    }
 
-                    // Update content
-                    let data = slides.getActiveElement();
-                    $("#blockHeading").text( data["Label"] );
-                    $("#queryBlock").text( data["Query"] );
+                    else {
 
-                    // Update the results table
-                    $("#resultsBlock").html(`
-                        <table id="resultsTable" class="table">
-                            <thead id="colHead"><br><br>Press the Run Query Button</thead>
-                            <tbody id="resultsBody"><br>To view your results</tbody>
-                        </table>
-                    `);
+                        // Move in the slides
+                        slides.goToPreviousPage();
+
+                        // Update content
+                        setTargetContent(slides, "#blockHeading", "Label");
+                        setTargetContent(slides, "#queryBlock", "Query");
+
+                        // Update the results table
+                        default_ResultsBlock();
+                    }
+
                 });
 
                 // Display content of next page
                 $("#nextQ").click( function () {
 
-                    // Move in the slides
-                    slides.goToNextPage();
+                    // Print alert or migrate
+                    if( !databaseLoaded || activeQuery ) {
+                        navAlert();
+                    }
 
-                    // Update content
-                    let data = slides.getActiveElement();
-                    $("#blockHeading").text( data["Label"] );
-                    $("#queryBlock").text( data["Query"] );
+                    else {
 
-                    // Update the results table
-                    $("#resultsBlock").html(`
-                        <table id="resultsTable" class="table">
-                            <thead id="colHead"><br><br>Press the Run Query Button</thead>
-                            <tbody id="resultsBody"><br>To view your results</tbody>
-                        </table>
-                    `);
+                        // Move in the slides
+                        slides.goToNextPage();
+
+                        // Update content
+                        setTargetContent(slides, "#blockHeading", "Label");
+                        setTargetContent(slides, "#queryBlock", "Query");
+
+                        // Update the results table
+                        default_ResultsBlock();
+                    }
                 });
 
 
@@ -327,87 +329,72 @@
                     window.alert("Please Use the Navigation bar to move between section in this view. This is to prevent accidental moves");
                 });
 
+
                 // Handle selecting list class items
                 $(document).delegate(".SectionQuery", "click", function () {
 
-                    // Initalize variables
-                    let elmID, section, query, data;
+                    // Print alert or migrate
+                    if( !databaseLoaded || activeQuery ) {
+                        navAlert();
+                    }
 
-                    // Get elementID to set position
-                    elmID = this.id;
-                    section = elmID.split("_")[0];
-                    query = elmID.split("_")[1];
-                    
-                    // Set postion in slide show
-                    slides.goToPage(section, query);
+                    else {
 
-                    // Set page content
-                    data = slides.getActiveElement();
-                    $("#blockHeading").text( data["Label"] );
-                    $("#queryBlock").text( data["Query"] );
+                        // Initalize variables
+                        let elmID, section, query, data;
 
-                    // Update the results table
-                    $("#resultsBlock").html(`
-                        <table id="resultsTable" class="table">
-                            <thead id="colHead"><br><br>Press the Run Query Button</thead>
-                            <tbody id="resultsBody"><br>To view your results</tbody>
-                        </table>
-                    `);
-                });
+                        // Get elementID to set position
+                        elmID = this.id;
+                        section = elmID.split("_")[0];
+                        query = elmID.split("_")[1];
+                        
+                        // Set postion in slide show
+                        slides.goToPage(section, query);
 
+                        // Update content
+                        setTargetContent(slides, "#blockHeading", "Label");
+                        setTargetContent(slides, "#queryBlock", "Query");
 
-                // Handle setting section from nav buttons
-                $(".SectionID").click( function() {
+                        // Update the results table
+                        default_ResultsBlock();
 
-                    // Initalize variables
-                    let data, sectionID;
-                    sectionID = this.text.replace(" ", "");
-                    slides.goToSection(sectionID);
-
-                    // Set the page content
-                    data = slides.getActiveElement();
-                    $("#blockHeading").text( data["Label"] );
-                    $("#queryBlock").text( data["Query"] );
-
-                    // Update the results table
-                    $("#resultsBlock").html(`
-                        <table id="resultsTable" class="table">
-                            <thead id="colHead"><br><br>Press the Run Query Button</thead>
-                            <tbody id="resultsBody"><br>To view your results</tbody>
-                        </table>
-                    `);
+                    }
                 });
 
 
                 // Handle executing queries
                 $("#runQuery").click(function() {
 
-                    // Get the active section
-                    let data, results;
-                    activeQuery = true;
-                    data = slides.getActiveElement();
+                    // Print alert or migrate
+                    if( !databaseLoaded || activeQuery) {
+                        navAlert();
+                    }
 
-                    /**
-                     * Delegate handling the query + table div to run_queries.
-                     * 
-                     *  import manageQueries from './supporting_modules/run_queries.js';
-                     * 
-                     */
-                    console.log("Query active = " + activeQuery);
-                    manageQueries(empDB, data['Query']);
-                    activeQuery = false;
-                    console.log("Query active = " + activeQuery);
+                    else {
+
+                        // Get the active section
+                        let data;
+                        activeQuery = true;
+                        data = slides.getActiveElement();
+
+                        // Delegate handling the query + table div to run_queries.
+                        manageQueries(empDB, data['Query']);
+                        activeQuery = false;
+                    } 
                 });
 
 
                 // Reset table
                 $("#resetBtn").click( function() {
-                    $("#resultsBlock").html(`
-                        <table id="resultsTable" class="table">
-                            <thead id="colHead"><br><br>Press the Run Query Button</thead>
-                            <tbody id="resultsBody"><br>To view your results</tbody>
-                        </table>
-                    `);
+
+                    // Print alert or migrate
+                    if( !databaseLoaded || activeQuery) {
+                        navAlert();
+                    }
+
+                    else {
+                        default_ResultsBlock();
+                    }
                 });
             });
 
