@@ -263,7 +263,7 @@
             // Import modules
             import SlideShow from './supporting_modules/SlideShow.js';
             import {manageQueries} from './supporting_modules/run_queries.js';
-            import {set_TV_Loader, set_TV_PendingResults} from './supporting_modules/set-tv-content.js';
+            import {set_TV_Loader, set_TV_PendingResults, setTargetContent, default_ResultsBlock, navAlert} from './supporting_modules/set-tv-content.js';
 
             // Initalize required variables
             let xhttp, updated;
@@ -287,9 +287,8 @@
                     set_TV_PendingResults();
                     
                     // Update content from the TV-Div
-                    let data = slides.getActiveElement();
-                    $("#blockHeading").text( data["Label"] );
-                    $("#queryBlock").text( data["Query"] );
+                    setTargetContent(slides, "#blockHeading", "Label");
+                    setTargetContent(slides, "#queryBlock", "Query");
                     databaseLoaded = true;
                     db_xhttp = null;
                 }
@@ -312,7 +311,6 @@
                 xhttp = new XMLHttpRequest();
                 xhttp.open("GET", "./queries/queries.json", true);
                 xhttp.send();
-
                 xhttp.onreadystatechange = function() {
 
                     // Update when ready
@@ -339,8 +337,8 @@
                 $("#prevQ").click( function () {
 
                     // Print alert or migrate
-                    if( !databaseLoaded ) {
-                        window.alert("Warning! Cannot migrate while the database is loading :(");
+                    if( !databaseLoaded || activeQuery ) {
+                        navAlert();
                     }
 
                     else {
@@ -349,17 +347,11 @@
                         slides.goToPreviousPage();
 
                         // Update content
-                        let data = slides.getActiveElement();
-                        $("#blockHeading").text( data["Label"] );
-                        $("#queryBlock").text( data["Query"] );
+                        setTargetContent(slides, "#blockHeading", "Label");
+                        setTargetContent(slides, "#queryBlock", "Query");
 
                         // Update the results table
-                        $("#resultsBlock").html(`
-                            <table id="resultsTable" class="table">
-                                <thead id="colHead"><br><br>Press the Run Query Button</thead>
-                                <tbody id="resultsBody"><br>To view your results</tbody>
-                            </table>
-                        `);
+                        default_ResultsBlock();
                     }
                     
                 });
@@ -368,8 +360,8 @@
                 $("#nextQ").click( function () {
 
                     // Print alert or migrate
-                    if( !databaseLoaded ) {
-                        window.alert("Warning! Cannot migrate while the database is loading :(");
+                    if( !databaseLoaded || activeQuery ) {
+                        navAlert();
                     }
 
                     else {
@@ -378,17 +370,11 @@
                         slides.goToNextPage();
 
                         // Update content
-                        let data = slides.getActiveElement();
-                        $("#blockHeading").text( data["Label"] );
-                        $("#queryBlock").text( data["Query"] );
+                        setTargetContent(slides, "#blockHeading", "Label");
+                        setTargetContent(slides, "#queryBlock", "Query");
 
                         // Update the results table
-                        $("#resultsBlock").html(`
-                            <table id="resultsTable" class="table">
-                                <thead id="colHead"><br><br>Press the Run Query Button</thead>
-                                <tbody id="resultsBody"><br>To view your results</tbody>
-                            </table>
-                        `);
+                        default_ResultsBlock();
                     }
                 });
 
@@ -397,8 +383,8 @@
                 $("#chanRight").click( function () {
 
                     // Print alert or migrate
-                    if( !databaseLoaded ) {
-                        window.alert("Warning! Cannot migrate while the database is loading :(");
+                    if( !databaseLoaded || activeQuery ) {
+                        navAlert();
                     }
 
                     else {
@@ -407,17 +393,11 @@
                         slides.goToNextSection();
 
                         // Update content
-                        let data = slides.getActiveElement();
-                        $("#blockHeading").text( data["Label"] );
-                        $("#queryBlock").text( data["Query"] );
+                        setTargetContent(slides, "#blockHeading", "Label");
+                        setTargetContent(slides, "#queryBlock", "Query");
 
                         // Update the results table
-                        $("#resultsBlock").html(`
-                            <table id="resultsTable" class="table">
-                                <thead id="colHead"><br><br>Press the Run Query Button</thead>
-                                <tbody id="resultsBody"><br>To view your results</tbody>
-                            </table>
-                        `);
+                        default_ResultsBlock();
                     }
                 });
 
@@ -426,8 +406,8 @@
                 $("#chanLeft").click( function () {
 
                     // Print alert or migrate
-                    if( !databaseLoaded ) {
-                        window.alert("Warning! Cannot migrate while the database is loading :(");
+                    if( !databaseLoaded || activeQuery ) {
+                        navAlert();
                     }
 
                     else {
@@ -436,17 +416,11 @@
                         slides.goToPreviousSection();
 
                         // Update content
-                        let data = slides.getActiveElement();
-                        $("#blockHeading").text( data["Label"] );
-                        $("#queryBlock").text( data["Query"] );
+                        setTargetContent(slides, "#blockHeading", "Label");
+                        setTargetContent(slides, "#queryBlock", "Query");
 
                         // Update the results table
-                        $("#resultsBlock").html(`
-                            <table id="resultsTable" class="table">
-                                <thead id="colHead"><br><br>Press the Run Query Button</thead>
-                                <tbody id="resultsBody"><br>To view your results</tbody>
-                            </table>
-                        `);
+                        default_ResultsBlock();
                     }
                 });
 
@@ -454,13 +428,14 @@
                 $(".SectionQuery").click(function () {
 
                     // Print alert or migrate
-                    if( !databaseLoaded ) {
-                        window.alert("Warning! Cannot migrate while the database is loading :(");
+                    if( !databaseLoaded || activeQuery ) {
+                        navAlert();
                     }
 
                     else {
+
                         // Initalize variables
-                        let elmID, section, query, data;
+                        let elmID, section, query;
 
                         // Get elementID to set position
                         elmID = this.id;
@@ -470,51 +445,14 @@
                         // Set postion in slide show
                         slides.goToPage(section, query);
 
-                        // Set page content
-                        data = slides.getActiveElement();
-                        $("#blockHeading").text( data["Label"] );
-                        $("#queryBlock").text( data["Query"] );
+                        // Update content
+                        setTargetContent(slides, "#blockHeading", "Label");
+                        setTargetContent(slides, "#queryBlock", "Query");
 
                         // Update the results table
-                        $("#resultsBlock").html(`
-                            <table id="resultsTable" class="table">
-                                <thead id="colHead"><br><br>Press the Run Query Button</thead>
-                                <tbody id="resultsBody"><br>To view your results</tbody>
-                            </table>
-                        `);
+                        default_ResultsBlock();
                     }
 
-                });
-
-
-                // Handle setting section from nav buttons
-                $(".SectionID").click( function() {
-
-                    // Print alert or migrate
-                    if( !databaseLoaded ) {
-                        window.alert("Warning! Cannot migrate while the database is loading :(");
-                    }
-
-                    else {
-
-                        // Initalize variables
-                        let data, sectionID;
-                        sectionID = this.text.replace(" ", "");
-                        slides.goToSection(sectionID);
-
-                        // Set the page content
-                        data = slides.getActiveElement();
-                        $("#blockHeading").text( data["Label"] );
-                        $("#queryBlock").text( data["Query"] );
-
-                        // Update the results table
-                        $("#resultsBlock").html(`
-                            <table id="resultsTable" class="table">
-                                <thead id="colHead"><br><br>Press the Run Query Button</thead>
-                                <tbody id="resultsBody"><br>To view your results</tbody>
-                            </table>
-                        `);
-                    }
                 });
 
 
@@ -522,27 +460,20 @@
                 $("#runQuery").click(function() {
 
                     // Print alert or migrate
-                    if( !databaseLoaded ) {
-                        window.alert("Warning! Cannot migrate while the database is loading :(");
+                    if( !databaseLoaded || activeQuery) {
+                        navAlert();
                     }
 
                     else {
 
                         // Get the active section
-                        let data, results;
+                        let data;
                         activeQuery = true;
                         data = slides.getActiveElement();
 
-                        /**
-                         * Delegate handling the query + table div to run_queries.
-                         * 
-                         *  import manageQueries from './supporting_modules/run_queries.js';
-                         * 
-                         */
-                        console.log("Query active = " + activeQuery);
+                        // Delegate handling the query + table div to run_queries.
                         manageQueries(empDB, data['Query']);
                         activeQuery = false;
-                        console.log("Query active = " + activeQuery);
                     } 
                 });
 
@@ -551,17 +482,14 @@
                 $("#resetBtn").click( function() {
 
                     // Print alert or migrate
-                    if( !databaseLoaded ) {
-                        window.alert("Warning! Cannot migrate while the database is loading :(");
+                    if( !databaseLoaded || activeQuery ) {
+                        navAlert();
                     }
 
                     else {
-                        $("#resultsBlock").html(`
-                            <table id="resultsTable" class="table">
-                                <thead id="colHead"><br><br>Press the Run Query Button</thead>
-                                <tbody id="resultsBody"><br>To view your results</tbody>
-                            </table>
-                        `);
+
+                        // Update the results table
+                        default_ResultsBlock();
                     }
                 });
             });

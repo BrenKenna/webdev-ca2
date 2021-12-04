@@ -2,7 +2,9 @@
  * 
  * Supporting functions to swap the TV-Div-Screen between
  * a loader for getting the database and pending results
- * content
+ * content.
+ * 
+ * Really should shape towards a SlideShow-Utils.js
  * 
  */
 
@@ -60,6 +62,39 @@ function set_TV_PendingResults() {
  * 
  */
 
+/**
+ * Set target content to be active position
+ * Target = "#blockHeading",
+ * Key = data["Label"]
+ * 
+ */
+function setTargetContent(slides, target, key) {
+
+    // Update content from the TV-Div
+    let data = slides.getActiveElement();
+    $(target).text( data[key] );
+}
+
+/**
+ * Function to default the results block html
+ * 
+ */
+function default_ResultsBlock(){
+    $("#resultsBlock").html(`
+        <table id="resultsTable" class="table">
+            <thead id="colHead"><br><br>Press the Run Query Button</thead>
+            <tbody id="resultsBody"><br>To view your results</tbody>
+        </table>
+    `);
+}
+
+
+/**
+ * Function to print alert message
+ */
+function navAlert() {
+    window.alert("Warning! Cannot interact with the database while it is loading, or navigate while a query is pending");
+}
 
 // Export functions
-export {set_TV_Loader, set_TV_PendingResults};
+export {set_TV_Loader, set_TV_PendingResults, setTargetContent, default_ResultsBlock, navAlert};

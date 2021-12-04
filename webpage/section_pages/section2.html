@@ -19,6 +19,7 @@
         <script type="module" src="../supporting_modules/run_queries.js"></script>
         <script type="module" src="../supporting_modules/set-tv-content.js"></script>
 
+
         <!-- SQL.js -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/0.2.4/js/sql.js"></script>
 
@@ -82,12 +83,15 @@
                     </li>
                 </ul>
 
-                <!-- Run 'em All Button-->
-                <div class="d-flex justify-content-center">
-                    <button type="button" id="runAllQueries" class="btn btn-success">
-                        <span>Run All Queries</span>
-                    </button>
-                </div>
+                <!--
+                    Run 'em All Button
+
+                    <div class="d-flex justify-content-center">
+                        <button type="button" id="runAllQueries" class="btn btn-success">
+                            <span>Run All Queries</span>
+                        </button>
+                    </div>
+                -->
             </nav>
 
             <!-- Navbar containing toggle button and page links -->
@@ -108,10 +112,10 @@
 
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="nav navbar-nav ml-auto">
-                                <li class="nav-item">
+                                <li class="nav-item active">
                                     <a class="nav-link SectionID" href="./section1.html">Section 1</a>
                                 </li>
-                                <li class="nav-item active">
+                                <li class="nav-item">
                                     <a class="nav-link SectionID" href="#">Section 2</a>
                                 </li>
                                 <li class="nav-item">
@@ -122,20 +126,7 @@
                     </div>
                 </nav>
 
-                <!-- Modal content if it was ignored -->
-                <!-- 
-                        <div id="helperDiv">
-                        <br><br>
-                        <h5 class="modal-title">Welcome to the online HR Database App</h5>
-                        <p>Use the sidebar on the left to navigate to a specific query, or the navigation buttons on the top right.
-                     <br>From there you can navigate the queries for that section using the sidebar, or move to another section using the navigation buttons.</p>
-                    </div>
-                 -->
-
-                <!--
-                    TV Div Template
-                        - Copy and paste the current CSS stylings
-                -->
+                <!-- TV Div Template (see index.html for notes) -->
                 <br>
                 <div class="tv container" id="tvDiv">
 
@@ -147,25 +138,7 @@
                     <div class="tv-content">
                         <div class="tv-screen container-fluid">
 
-                            <!-- Header / Query Label -->
-                            <div id="blockTitle" class="text-center tv-item">
-                                <h3 id="blockHeading" class="modal-title"></h3>
-                            </div>
-
-                            <!-- Query Code Block -->
-                            <div id="queryBlock" class="tv-item text-justify">
-                                <p id="queryText"></p>
-                            </div>
-
-                            <!-- Results -->
-                            <div id="resultsBlock" class="tv-item">
-
-                                <!-- Simple Table -->
-                                <table id="resultsTable" class="table">
-                                    <thead id="colHead"><br><br>Press the Run Query Button</thead>
-                                    <tbody id="resultsBody"><br>To view your results</tbody>
-                                </table>
-                            </div>
+                            
                         </div>
                     </div>
 
@@ -202,26 +175,9 @@
             </div>        
         </div>
 
-        <!-- Modal for how to navigate webpage -->
-        <div id="tutorialModal" class="modal fade">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header text-center">
-                        <h5 class="modal-title">Welcome to the online HR Database App</h5>
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    </div>
-                    <div class="modal-body">
-                        <p>In addition to the central TV-Viewer, use the sidebar on the left to navigate to a specific query, or the navigation buttons on the top right for a specific collection of queries.</p>
-                        <p>Using these tools you can navigate the entire content, and execute the desired query at leisure.</p>
-                        <p>Or, sit back, relax and enjoy an automated view of the data using the "<span style="font-weight: bold; font-style: italic;">Run All Queries</span>" button... With some time to scroll through the results of course ;).</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
         <!--
-            Does not work unless unless specified here FFS = Bootstrap
-            Script for sidebar
+            Get database, page content, add functions to buttons
+              & raise alerts during database download or active query
         -->
         <script type="module">
 
@@ -248,7 +204,6 @@
                     // Instantiate db object from response
                     console.log("\nSetting up database");
                     empDB = new Uint8Array(db_xhttp.response);
-                    db_xhttp = null;
                     set_TV_PendingResults();
 
                     // Update content from the TV-Div
