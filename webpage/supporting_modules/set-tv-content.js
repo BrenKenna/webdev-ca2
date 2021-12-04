@@ -43,8 +43,8 @@ function set_TV_PendingResults() {
 
             <!-- Simple Table -->
             <table id="resultsTable" class="table">
-                <thead id="colHead"><br><br>Press the Run Query Button</thead>
-                <tbody id="resultsBody"><br>To view your results</tbody>
+                <thead id="colHead"><br><br><span id="tempTab">Press the Run Query Button</span></thead>
+                <tbody id="resultsBody"><br><span id="tempTab">To view your results</span></tbody>
             </table>
         </div>
     `;

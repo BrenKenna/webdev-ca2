@@ -243,6 +243,7 @@ a[data-toggle="collapse"] {
 
 #blockTitle{
     height: 8%;
+    font-size: 1.2em;
 }
 #queryBlock{
     height: 23%;
@@ -254,6 +255,15 @@ a[data-toggle="collapse"] {
     font-style: italic;
     padding-left: 1.5%;
     padding-right: 1.5%;
+    font-size: 1em;
+}
+
+#tempTab{
+    font-weight: bold;
+    font-style: italic;
+    padding-left: 1.5%;
+    padding-right: 1.5%;
+    font-size: 1em;
 }
 
 /* TV Buttons */
@@ -347,13 +357,14 @@ a[data-toggle="collapse"] {
     top: 30%;
     left: 40%;
     width: 190px;
-    height: 140px;
+    height: 180px;
 }
 #loaderText{
     margin-top: 10px;
     color: black;
     font-weight: bold;
     font-style: italic;
+    font-size: 1.2em;
 }
 
 /* Style database for different web browsers */
