@@ -288,7 +288,7 @@
             let db_xhttp = new XMLHttpRequest();
             db_xhttp.open("GET", "./database/employees.db", true);
             db_xhttp.responseType = 'arraybuffer';
-            // db_xhttp.send();
+            db_xhttp.send();
             db_xhttp.onreadystatechange = function() {
                 if (db_xhttp.readyState == 4 && db_xhttp.status == 200) {
 
