@@ -5,7 +5,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Section 2 Queries</title>
+        <title>Section 3 Queries</title>
 
         <!-- Custom page stlyings -->
         <link href="../stylings.css" rel="stylesheet">
@@ -53,17 +53,17 @@
                 <ul class="list-unstyled components">
                     <li class="active">
                         
-                        <!-- Drop down menu for section2 -->
-                        <a href="#section2_menu" data-toggle="collapse" class="dropdown-toggle" aria-expanded="false">Section 2 Queries</a>
-                        <ul class="collapse list-unstyled" id="section2_menu">
+                        <!-- Drop down menu for section3 -->
+                        <a href="#section3_menu" data-toggle="collapse" class="dropdown-toggle" aria-expanded="false">Section 3 Queries</a>
+                        <ul class="collapse list-unstyled" id="section3_menu">
                             <li id="Query1">
-                                <a class="SectionQuery" id="Section2_Query1" href="#">Query 1</a>
+                                <a class="SectionQuery" id="Section3_Query1" href="#">Query 1</a>
                             </li>
                             <li id="Query2">
-                                <a class="SectionQuery" id="Section2_Query2" href="#">Query 2</a>
+                                <a class="SectionQuery" id="Section3_Query2" href="#">Query 2</a>
                             </li>
                             <li id="Query3">
-                                <a class="SectionQuery" id="Section2_Query3" href="#">Query 3</a>
+                                <a class="SectionQuery" id="Section3_Query3" href="#">Query 3</a>
                             </li>
                         </ul>
                     </li>
@@ -92,11 +92,11 @@
                                 <li class="nav-item">
                                     <a class="nav-link SectionID" href="./section1.html">Section 1</a>
                                 </li>
-                                <li class="nav-item active">
-                                    <a class="nav-link SectionID" href="#">Section 2</a>
-                                </li>
                                 <li class="nav-item">
-                                    <a class="nav-link SectionID" href="./section3.html">Section 3</a>
+                                    <a class="nav-link SectionID" href="./section2.html">Section 2</a>
+                                </li>
+                                <li class="nav-item active">
+                                    <a class="nav-link SectionID" href="#">Section 3</a>
                                 </li>
                             </ul>
                         </div>
@@ -141,7 +141,7 @@
                             <span>Run Query</span>
                         </button>
 
-                        <!-- Go to last -->
+                        <!-- Go to next query -->
                         <button type="button" id="nextQ" class="btn btn-primary">
                             <span>Next</span>
                         </button>
@@ -171,7 +171,7 @@
 
             // Request database
             let db_xhttp = new XMLHttpRequest();
-            db_xhttp.open("GET", "../database/employees.db", true);
+            db_xhttp.open("GET", "../employees.db", true);
             db_xhttp.responseType = 'arraybuffer';
             db_xhttp.send();
             db_xhttp.onreadystatechange = function() {
@@ -209,12 +209,12 @@
                     if (xhttp.readyState == 4 && xhttp.status == 200) {
 
                         // Initalize variables
-                        let sectionID = "Section2";
+                        let sectionID = "Section3";
                         let listElm, queryID, queryLabel, query, menuID;
 
                         // Update the slides
                         let dataset = JSON.parse(xhttp.responseText);
-                        dataset = { "Section2": dataset[sectionID] };
+                        dataset = { "Section3": dataset[sectionID] };
                         slides.setdataset(dataset);
 
                         // Update sidebar
