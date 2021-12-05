@@ -26,7 +26,7 @@
 
         "Query2": {
             "Label": "List Total Number of Employees",
-            "Query": "SELECT COUNT(DISTINCT emp_id) AS 'N Employees' FROM employees LIMIT 100;"
+            "Query": "SELECT COUNT(DISTINCT emp_id) AS 'N Employees' FROM employees;"
         },
         
         "Query3": {

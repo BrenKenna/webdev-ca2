@@ -36,7 +36,7 @@
 
         "Query2": {
             "Label": "List Number of Past/Present Employees",
-            "Query": "SELECT COUNT(DISTINCT emp_id) AS 'N Employees' FROM employees LIMIT 100;"
+            "Query": "SELECT COUNT(DISTINCT emp_id) AS 'N Employees' FROM employees;"
         },
         
         "Query3": {
@@ -59,7 +59,7 @@
 
         "Query1": {
             "Label": "Count Employees Working Since May-1991",
-            "Query": "SELECT COUNT(DISTINCT employees.emp_id) AS 'Employee Count' FROM employees iNNER JOIN salaries USING(emp_id) WHERE hire_date >= '1991-05-01' AND to_date = '9999-01-01';"
+            "Query": "SELECT COUNT(DISTINCT employees.emp_id) AS 'Employee Count' FROM employees INNER JOIN salaries USING(emp_id) WHERE hire_date >= '1991-05-01' AND to_date = '9999-01-01';"
         },
 
         "Query2": {
@@ -73,7 +73,7 @@
         },
 
         "Query4": {
-            "Label": "Get Salary Historty for Employee '10012'",
+            "Label": "Get Salary History for Employee '10012'",
             "Query": "SELECT salaries.emp_id, employees.first_name, employees.last_name, salary, from_date, to_date FROM salaries INNER JOIN employees USING(emp_id) WHERE salaries.emp_id = 10012;"
         },
         
