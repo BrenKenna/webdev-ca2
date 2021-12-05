@@ -23,7 +23,17 @@
 
         "Query5": {
             "Label": "List Any Employee Born After 1954",
-            "Query": "SELECT DISTINCT first_name AS 'First Name',  last_name AS 'Last Name', birth_date AS 'Date of Birth' from employees where birth_date > '1954-01-01' LIMIT 100;"
+            "Query": "SELECT DISTINCT first_name AS 'First Name', last_name AS 'Last Name', birth_date AS 'Date of Birth' from employees where birth_date > '1954-01-01' LIMIT 100;"
+        },
+        
+        "Query6": {
+            "Label": "List Past Employees",
+            "Query": "SELECT COUNT(DISTINCT emp_id) AS 'Employee Count' FROM employees INNER JOIN salaries USING (emp_id) where salaries.to_date < '9999-01-01' LIMIT 100;"
+        },
+        
+        "Query7": {
+            "Label": "Count Positions Held per Employee",
+            "Query": "SELECT emp_id AS 'Employee ID', COUNT(DISTINCT title) AS 'N Positions' FROM titles GROUP BY emp_id LIMIT 100;"
         }
     },
 
@@ -36,7 +46,7 @@
 
         "Query2": {
             "Label": "List Number of Past/Present Employees",
-            "Query": "SELECT COUNT(DISTINCT emp_id) AS 'N Employees' FROM employees;"
+            "Query": "SELECT COUNT(DISTINCT emp_id) AS 'Employee Count' FROM employees;"
         },
         
         "Query3": {
@@ -52,6 +62,16 @@
         "Query5": {
             "Label": "List Current Job Title per Employee",
             "Query": "SELECT DISTINCT titles.emp_id AS 'EmployeeID', first_name AS 'First Name', last_name AS 'Last Name', title AS 'Job Title', from_date AS 'Start Date' FROM titles INNER JOIN employees USING(emp_id) WHERE to_date = '9999-01-01' LIMIT 100;"
+        },
+        
+        "Query6": {
+            "Label": "Count Past Male Employees",
+            "Query": "SELECT COUNT(DISTINCT employees.emp_id) AS 'Employee Count' FROM employees INNER JOIN salaries USING(emp_id) WHERE gender = 'M' AND to_date < '9999-01-01';"
+        },
+        
+        "Query7": {
+            "Label": "Count Positions Held per Current Employee",
+            "Query": "SELECT emp_id AS 'Employee ID', COUNT(DISTINCT title) AS 'N Positions' FROM titles GROUP BY emp_id HAVING to_date = '9999-01-01' LIMIT 100;"
         }
     },
 
@@ -80,6 +100,11 @@
         "Query5": {
             "Label": "Count Active Managers",
             "Query": "SELECT COUNT(DISTINCT emp_id) AS 'N Managers' FROM dept_manager WHERE to_date = '9999-01-01';"
+        },
+        
+        "Query6": {
+            "Label": "Count Active Salaries Below 60000",
+            "Query": "SELECT COUNT(DISTINCT emp_id) AS 'Employee Count' FROM salaries WHERE to_date = '9999-01-01' AND salary < 60000;"
         }
     }
 }
