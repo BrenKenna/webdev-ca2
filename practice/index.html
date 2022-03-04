@@ -1,0 +1,177 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <title>Practice</title>
+    
+        <!-- jQuery and jQuery-UI -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+
+        <!-- Bootstrap CSS CDN -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+
+        <!-- Font Awesome JS -->
+        <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+        <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+        <!-- Popper.JS -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+        <!-- Bootstrap JS -->
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+        
+        
+        <!-- Style form -->
+        <style>
+            form {
+                margin-left: 10px;
+            }
+            input {
+                margin-bottom: 10px;
+            }
+            input[type = text] {
+                width: 250px;
+            }
+            
+            #payData{
+                list-style-type: none;
+                padding-left: 0px;
+            }
+        </style>
+   
+    </head>
+
+    
+    <body>
+        
+        <!-- Simple form, whose data is printed to console window -->
+        <br><br><br>
+        <form id="contactForm" action="">
+            
+            <!-- Basic details -->
+            <label for="fName">Firstname: </label>
+            <input class="contact" id="fName" name="fName" type="text" placeholder="Please enter your fistname">
+            <br>
+            
+            <label for="lName">Lastname: </label>
+            <input class="contact" id="lName" type="text" placeholder="Please enter your lastname">
+            <br>
+            
+            <label for"email">Email address: </label>
+            <input class="contact" id="email" type="text" placeholder="your-email@example.com">
+            <br>
+        
+            <!-- Select county -->
+            <label for="county">Please Select your County: </label>
+            <select id="county">
+                <option></option>
+                <option>Dublin</option>
+                <option>Cork</option>
+                <option>Galway</option>
+                <option>Sligo</option>
+            </select>
+            <br>
+            
+            
+            <!-- Payment method -->
+            <ul id="payData">
+                <li>
+                    <label for="debit">Debit: </label>
+                    <input class="pay" id="debit" type="radio" name="payMeth" value="debit">
+                </li>
+                
+                <li>
+                    <label for="credit">Credit: </label>
+                    <input class="pay" id="credit" type="radio" name="payMeth" value="credit">
+                </li>
+            </ul>
+            
+            <!-- Submit & reset buttons -->
+            <button id="submitData" value="Submit">Submit</button>
+            <button id="reset">Reset</button>
+        </form>
+        
+        <!-- JS Code for form -->
+        <script>
+            
+            function validatePayload(data) {
+                let output = [];
+                let counter = 0;
+                for( dataPoint in data) {
+                    if ( data[dataPoint] == "" || data[dataPoint] == null ) {
+                        output[counter] = `Error, value for '${dataPoint}' is missing`;
+                        counter++;
+                    }
+                }
+                return output;
+            }
+            
+            $(document).ready( function() {
+                
+                // Handle form submission
+                $("#submitData").click( function() {
+                    
+                    // List input elements
+                    let elm;
+                    let payload = {
+                        fName: "",
+                        lName: "",
+                        email: "",
+                        county: "",
+                        payment: ""
+                    };
+                    
+                    // Get contact data
+                    for( elem of $(".contact").toArray()) {
+                        if( elem.value != "") {
+                            payload[elem.id] = elem.value;
+                        }
+                    }
+                    
+                    
+                    // Get value for the dropdown menu
+                    let choseCounty = $("#county").find(":selected").text();
+                    if ( choseCounty != "" ) {
+                        payload["county"] = choseCounty;
+                    }
+                    
+                    // Get value for payData
+                    if ( $(".pay[name=payMeth]:checked").val() != "" ) {
+                        payload["payment"] = $(".pay[name=payMeth]:checked").val();
+                    }
+                    
+                    // Validate payload
+                    let message = validatePayload(payload);
+                    if ( message.length >= 1 ) {
+                        window.alert(message.join("\n"));
+                    } else {
+                        window.alert("Your data has been submitted");
+                    }
+                    
+                });
+                
+                
+                // Reset button
+                $("#reset").click( function() {
+                    
+                    // List input elements
+                    let elm;
+                    for( elem of $("input").toArray()) {
+                        elem.value = "default";
+                    }
+                    
+                    // Reset dropdown menu
+                    $("#county").selectedIndex = 0;
+                } );
+            });
+        </script>
+    </body>
+    
+</html>
